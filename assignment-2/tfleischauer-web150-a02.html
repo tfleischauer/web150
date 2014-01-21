@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Web 150 Assignment 2: Choose Your Own Adventure</title>
+		<meta charset="utf-8">
+        
+			<script>
+			  console.log("This is a guide to help you find the right restaurant at Mountain Village Mall");
+			  var hungry = confirm("Are you hungry?");
+			  if(!hungry) {
+				  console.log("Come back sometime when you are hungry.");
+			  }
+			  var OKOK = confirm("Is it OK if the food is just OK but not amazing?")
+				  if(OKOK) {
+					  // how many people?
+					  var numberPeople = prompt("How many people will you be going with you?");
+					  numberPeople = Number(numberPeople);
+						  if (numberPeople > 50) {
+							  console.log("Might be best for you to go to iHop. IHop is the biggest restaurant at Mountain Village Mall.");
+							  } else {
+								  console.log("OK, cool. Just wanted to make sure you don't have a huge party, there are a lot of small places at Mountain Village.");
+								  var style = prompt("What style do you feel like? The choices are American, Chinese, Ethiopian, Japanese, or Mexican.");
+								  
+								  
+									  switch (style) {
+										  case "American":
+										  console.log("Your choices are IHop or Starbucks");
+										  break;
+										  
+										  case "Chinese":
+										  console.log("Black Pearl is the only Chinese option.");
+										  break;
+										  
+										  case "Ethiopian":
+										  console.log("Karibu is the only Ethiopian option.");
+										  break;
+										  
+										  case "Japanese":
+										  console.log("Mountain Village Teriyaki is the only Japanese option.");
+										  break;
+										  
+										  case "Mexican":
+										  console.log("QDoba is the only Mexican option.");
+										  break;
+										  
+										  default:
+										  console.log(style + " is not offered at Mountain Village Mall. Better luck elsewhere.");
+									  }
+									  
+									  console.log("Thanks for using the Mountain Village Mall restaurant finder.");
+							  }
+	
+							  
+				  } else {
+					  console.log("Better go somewhere else. You will hate eating at Mountain Village Mall.");				  
+			  }
+            </script>
+	
+</html>
