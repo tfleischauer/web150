@@ -12,73 +12,93 @@
 			// object variables
 			var highestObject = { amount: 0 };
 			var lowestObject = { amount: Infinity };
-			// var moreThan5PercentCountryObjects = { countries: 0 };
+			var moreThan5PercentCountries = { amount: expenditures[0] }; // why is amount needed to initialize? why not country?			
+			var lessThan1PercentObject = { amount: expenditures[0] };
 			
 			// integer or float variables
 			var expenditureTally = 0;
 			var expenditureAverage = 0;
-			
-			// var counterMoreThan5PercentCountries = 0;
-			// var lessThan1PercentObject = 0;
-			// var NorthAmericanExpendituresObject = 0;
-			// var allCountriesExceptNAObject = 0;
-			// var countries = "";
+			var northAmericanExpenditureTally = 0;
+			var northAmericanExpenditureAverage = 0;
+			var allCountriesExceptNATally = 0;
+			var allCountriesExceptNAAverage = 0;
+			var countryCounter = 0;
 			
 			for (var i = 0; i < expenditures.length; i++) {
 			
 				var countryExpenditureObject = expenditures[i];
+				var amountNumber = Number(countryExpenditureObject.amount); // convert "amount" string to a Number
 				
 				// What's the country with the highest expenditures? 
 				if (countryExpenditureObject.amount > highestObject.amount) {
 					highestObject = countryExpenditureObject;
 				}
+				
 				// What's the country with the lowest expenditures? 
 				if (countryExpenditureObject.amount < lowestObject.amount) {
 					lowestObject = countryExpenditureObject;
 				}
 				
 				// What is the average military expenditure rate?
-				
-				// if there is a country, this should include all countries.
-				// Potential problem what if there is an empty string
-				// if (countryExpenditureObject.country) {
-				
 				// if there is an array item
-				// if(countryExpenditureObject) {
-				
-				// if there is an amount, potential problem what if there is an empty string
-				if (countryExpenditureObject.amount) {
+				if(countryExpenditureObject) {
 					// take the country's expenditure amount and add it it to the total
-					// expenditureTally += countryExpenditureObject.amount;
-					expenditureTally++; 
+					expenditureTally += Number(countryExpenditureObject.amount); 
 				}
 
 				// How many countries spend more than 5% of GDP on their military?
-					// if country has higher than 5%, put country in an object variable
-					// convert string to Number
-				// if (countryExpenditureObject.amount > 5) { 
-					// moreThan5PercentCountryObjects = countryExpenditureObject;
-				// count object variables - moreThan5PercentCountryObjects.length;
-				// }
-				// console.log(moreThan5PercentCountryObjects);
+				if (amountNumber > 5) {
+					// if country has higher than 5%, put country in an object variable 
+					moreThan5PercentCountries = countryExpenditureObject.country;
+					// then count object variables - moreThan5PercentCountryObjects.length;
+				}
+				
+				// How many countries spend less than 1%?
+				if (amountNumber < 1) {
+					lessThan1PercentObject = countryExpenditureObject.country;
+				}
+				
+				// What is the average expenditures just for North America (Canada, the US, and Mexico)?
+				if (countryExpenditureObject.country === "Canada" || countryExpenditureObject.country === "Mexico" || 
+				countryExpenditureObject.country === "United States") {
+					northAmericanExpenditureTally += Number(countryExpenditureObject.amount);
+					countryCounter++; 
+				}
+				
+				// If we exclude North America, how does the average expenditure change? 
+				if (countryExpenditureObject.country != "Canada" || countryExpenditureObject.country != "Mexico" || 
+				countryExpenditureObject.country != "United States") {
+					allCountriesExceptNATally += amountNumber; 
+					
+				}
+				
 			}
 			
 			// outside of loop because expenditureAverage waits for a total
 			expenditureAverage = expenditureTally/expenditures.length; 
 			
+			// outside of loop because northAmericanExpenditureAverage waits for a total
+			northAmericanExpenditureAverage = northAmericanExpenditureTally/countryCounter;
+			
+			// outside of loop because allCountriesExceptNAAverage waits for a total
+			allCountriesExceptNAAverage = allCountriesExceptNATally/(expenditures.length - countryCounter);
+			
+			// why does this only display Israel?
+			console.log("More than 5% countries by name: " + moreThan5PercentCountries);
+			// why does this only display Argentina?
+			console.log("Less than 1% countries by name: " + lessThan1PercentObject);
+			
+			// console.log("More than 5% countries by name: " + moreThan5PercentCountries[country]);
+			
+			
 			console.log("The country with the highest military expenditures is: " + highestObject.country);
 			console.log("The country with the lowest military expenditures is: " + lowestObject.country);
 			console.log("The average military expenditure rate of all countries is: " + expenditureAverage);
-			
-			
-			// console.log("Amount of countries that spend more than 5% of GDP on their military is: " + moreThan5PercentCountryObjects.length);
-
-	// Next:    
-    // How many countries spend less than 1%?
-    // What is the average expenditures just for North America (Canada, the US, and Mexico)?
-    // If we exclude North America, how does the average expenditure change? 
-
-		
+			console.log("The amount of countries that spend more than 5% of GDP on their military is: " + moreThan5PercentCountries.length);
+			console.log("The amount of countries that spend less than 1% of GDP on their military is: " + lessThan1PercentObject.length);
+			console.log("The average military expenditure rate of Canada, Mexico, and the United States is: " + northAmericanExpenditureAverage);
+			console.log("The average military expenditure rate of all countries except Canada, Mexico, and the United States is: " + allCountriesExceptNAAverage);
+	
 		</script>
 	</body>
 </html>
