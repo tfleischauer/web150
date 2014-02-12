@@ -1,0 +1,144 @@
+<!doctype html>
+<html>
+<head>
+	<title>Boy Meets Gallery</title>
+    <meta charset="utf-8">
+	<style>
+		body {
+			font-family:"Century Gothic", Helvetica, Arial, sans-serif;
+		}
+		
+		#wrapper {
+			width:720px;
+			margin-left:auto;
+			margin-right:auto;	
+		}
+		
+		header {
+			padding: 0px 40px;	
+		}
+		
+		footer {
+			padding: 40px;	
+		}
+		
+		#content {
+			padding: 0px 0px;	
+			margin-left:auto;
+			margin-right:auto;
+		}
+		
+		.thumb-nails {
+			margin-left:auto;
+			margin-right:auto;	
+			
+		}
+		
+		.thumb-nails li{
+			display:inline-block;
+			border: 1px solid black;
+			border-radius: 3px 3px 3px 3px; /* top right bottom left */
+			padding: 5px 5px;
+			background:#FFF;
+		}
+		
+		.thumb-nails li.active {
+			background:#DDD;
+			border-bottom: 1px solid red;	
+		}
+		
+		/*.image-lg {
+			margin-left:auto;
+			margin-right:auto;	
+		}*/
+		
+		#bigPictureArea img {
+			margin: auto;
+			display: block;	
+		}
+	</style>
+
+</head>
+<body>
+
+<div id="wrapper">
+<header>
+	<!--<hgroup>-->
+      <h1>Troy Fleischauer</h1>
+      <p>Web 150: A5 - Boy Meets Gallery</p>
+      <p>A jQuery Picture Gallery featuring the art of Nan Nalder</p>
+    <!--</hgroup>-->
+</header>    
+    
+<div id="content">    
+
+<ul class="thumb-nails">
+  <li> <a href="#one"><img src="images/th-dahlias-210x210px.jpg" alt="th-dahlias-210x210px" title="th-dahlias-210x210px" /></a></li> <!-- href *in page* links are valid id selectors -->
+  <li> <a href="#two"><img src="images/th-dahlias-apricot-210x210px.jpg" alt="th-dahlias-apricot-210x210px" title="th-dahlias-apricot-210x210px" /></a></li>
+  <li> <a href="#three"><img src="images/th-dahlias-apricot-early-fall-210x210px.jpg" alt="th-dahlias-apricot-early-fall-210x210px" title="th-dahlias-apricot-early-fall-210x210px" /></a></li>
+  <li> <a href="#four"><img src="images/th-dahlias-blue-210x210px.jpg" alt="th-dahlias-blue-210x210px" title="th-dahlias-blue-210x210px" /></a></li>
+  <li> <a href="#five"><img src="images/th-dahlias-coral-210x210px.jpg" alt="th-dahlias-coral-210x210px" title="th-dahlias-coral-210x210px" /></a></li>
+  <li> <a href="#six"><img src="images/th-dahlias-in-august-2002-7-210x210px.jpg" alt="th-dahlias-in-august-2002-7-210x210px" title="th-dahlias-in-august-2002-7-210x210px" /></a></li>
+</ul>
+
+<div id="bigPictureArea">
+  <div class="image-lg" id="one"><img src="images/Dahlias-lg.jpg" alt="Dahlias-lg" title="Dahlias-lg" /></div>
+  <div class="image-lg" id="two"><img src="images/Apricot Dahlias-lg.jpg" alt="Apricot Dahlias-lg" title="Apricot Dahlias-lg" /></div>
+  <div class="image-lg" id="three"><img src="images/Apricot Dahlias in Early Fall-lg.jpg" alt="Apricot Dahlias in Early Fall-lg" title="Apricot Dahlias in Early Fall-lg" /></div>
+  <div class="image-lg" id="four"><img src="images/Blue Dahlias-lg.jpg" alt="Blue Dahlias-lg" title="Blue Dahlias-lg" /></div>
+  <div class="image-lg" id="five"><img src="images/Coral Dahlias-lg.jpg" alt="Coral Dahlias-lg" title="Coral Dahlias-lg" /></div>
+  <div class="image-lg" id="six"><img src="images/Dahlias in August 2002-7-lg.jpg" alt="Dahlias in August 2002-7-lg" title="Dahlias in August 2002-7-lg" /></div>
+</div>
+
+<footer>&copy; 2014 Web Design by Troy Fleischauer &bull; Art by Nan Nalder</footer>
+
+</div> <!-- end content -->
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+// find the elements we want to monitor for events. .thumb-nails class is what we are looking for. thumb-nails is a ul class with multiple li elements containing "a" tags, and "a" is what we are selecting for.
+var thumbNailLinks = $(".thumb-nails a");
+// start listening for events. "on" is an event listener. When the user clicks, run the function. the function will cancel the browser's default event behavior.
+thumbNailLinks.on("click", function(e) {
+	// hide current image-lg div
+	// first find what to act on which is elements with a class of ".image-lg", this will be a div class. Note: (jQ or the function?) will not find any items that are off screen or overflow:hidden.
+	$(".image-lg:visible").hide(); // OK to use $(".image-lg:visible()").hide(); it will work too.
+	
+	// get the <a> that was clicked, wrap in jQuery
+	$this = $(this);
+	
+	// get the <a> tag's href attribute (the one that was clicked) 
+	var href = $this.attr("href");
+	
+	// find the list item with the href value found on the last line, put the href value in a variable
+	var hrefAddress = $(href);
+	
+	// call the list item's href address and show it's content in the related div
+	hrefAddress.fadeIn();
+	
+	// prevent default browser behavior. cancels the default navigation. important for progressive implmentation (allowing the page to work if JavaScript is deactivated.)
+	e.preventDefault();
+	
+	// remove any .active classes on the page so that we can assign a special class to whatever gets clicked on to call different CSS rules.
+	// look for .active, then remove .active
+	$(".active").removeClass(".active"); // why not "." here to remove?
+	
+	// find the li tag that was clicked
+	// start with class that I clicked and then work your way up.
+	// looking for the closest _____________. Doesn't care how many tags between "them"? Define "them." 
+	var li = $this.closest("li");
+	
+	// add the active class
+	li.addClass("active");	
+});
+
+// Default diplay: first tab div, auto "click" on-load of page
+thumbNailLinks.filter(":first").click();
+
+</script>
+
+</div> <!-- end wrapper -->
+
+</body>
+
+</html>
