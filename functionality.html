@@ -23,21 +23,13 @@ var assert = function(test, message) {
 };
 
 //1. Create a function that returns a "doubled" string: "hello" -> "hellohello"
-// var doubler = function() {};
-
-var doubler = function(input) {
-    return input + input;   
-};
+var doubler = function() {};
 
 assert( doubler("a") == "aa", "Double simple strings");
 assert( doubler("bbc") == "bbcbbc", "Double longer strings as well");
 
 //2. Create a function that converts decimal values into percentage strings: .01 -> "1%"
-// var makePercentage = function() {};
-
-var makePercentage = function(num) {
-    return num * 100 + "%";
-};
+var makePercentage = function() {};
 
 assert( makePercentage(.13) == "13%" );
 assert( makePercentage(1) == "100%" );
@@ -45,13 +37,7 @@ assert( makePercentage(.456) == "45.6%", "Don't round your results");
 
 //3. Create a function that takes two numbers and adds them together. If you
 //feed it a string, it should convert it to a number first.
-// var adder = function() {};
-
-var adder = function(num1, num2) {
-    var num = Number(num1);
-    var anotherNum = Number(num2);
-    return num + anotherNum;
-};
+var adder = function() {};
 
 assert( adder(1, 2) == 3, "Numbers should be added together");
 assert( adder("2", 4) == 6, "Strings should be converted to numbers");
@@ -59,41 +45,23 @@ assert( isNaN( adder("abc", 4) ) && typeof adder("abc", 4) == "number", "Bad inp
 
 //4. Using the concept of function scope, change the variable `greeting` to
 //read "Hello, world!" just by editing the function `sayHello`.
-// var greeting;
-// var sayHello = function() {};
-
 var greeting;
-var sayHello = function() {
-    greeting = "Hello, world!";    
-};
+var sayHello = function() {};
 
 sayHello();
 assert( greeting == "Hello, world!", "sayHello() should alter greeting");
 
 //5. Remember our loops? They're back: update `findTotal` so that it totals up
 //all the numbers in an array that's passed in.
-// var samples = [1, 2, 3, 4, 5];
-// var findTotal = function() {};
-
 var samples = [1, 2, 3, 4, 5];
-var findTotal = function(arr) {
-    var x = 0;
-    for (var i = 0; i < arr.length; i++) {
-       x = x + arr[i];
-    }
-    return x;   
-};
+var findTotal = function() {};
 
 assert( findTotal(samples) == 15, "Function found the correct total");
 
 //6. BONUS: Using the idea of functions as objects, update `identity` so
 //that it calls the function that is passed in, and returns its value.
 var testFunction = function() { return "This value should pass through " };
-// var identity = function() {};
-
-var identity = function(fn) {
-    return fn();
-};
+var identity = function() {};
 
 assert( identity(testFunction) == testFunction(), "(bonus) Identity function should call its argument");
 
@@ -103,17 +71,7 @@ assert( identity(testFunction) == testFunction(), "(bonus) Identity function sho
 // b) calls that function on each item in the array
 // c) returns an array containing only items where the filter returned true
 
-// var filter = function() {};
-
-var filter = function(arr, func) {
-        var filtered = [];
-            for (var i = 0; i < arr.length; i++) {
-                if (func(arr[i])) {
-                filtered.push(arr[i]);
-                }
-            }   
-        return filtered;
-};
+var filter = function() {};
 
 //this function returns true if the item is an odd number
 var isOdd = function(item) {
