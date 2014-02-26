@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+<head>
+	<title>Paint Shop</title>
+	<meta charset="UTF-8">
+	
+	<style>
+		canvas { border: 1px dotted black;
+				display:block;		}
+	</style>	
+</head>
+	<body>
+	
+		<button class = "shape"  data-shape="square">[]</button>
+		<button class = "shape"  data-shape="circle">()</button>
+		<button class = "shape" data-shape="triangle">Triangle</button>
+		
+		<button class = "size"  data-size="10">Small</button>
+		<button class = "size"  data-size="30">Large</button>
+		
+		<button class = "color"  data-color="red">Red</button>
+		<button class = "color"  data-color="blue">Blue</button>
+		<button class = "color"  data-color="pink">Pink</button>
+		<button class = "color"  data-color="orange">Orange</button>
+		
+		canvas!
+		<!-- can be styled to be any style, if not specified will use default size -->
+		<canvas id="canvas" width=800 height=600>
+			Your browser doesn't support canvas
+		</canvas>
+
+		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<script>
+
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		
+		var $canvas = $(canvas); // same as working with events in jQ
+		
+		var brush = {
+			active: false, // by default you are not drawing on the canvas unless the mouse is down
+			shape: "square",
+			size: 20,
+			color: "red" //,
+			// color: "blue",
+			// color: "pink",
+			// color: "orange"
+		};
+		
+		// x, y center coordinates
+		var drawRect = function(x, y, size) {
+			context.fillRect(x - size / 2, y - size / 2, size, size) // half of width
+		}
+		
+		// change size to get radius
+		var drawCircle = function(x, y, size) {
+			context.beginPath();
+			context.arc(x, y, size / 2, 0, 2 * Math.PI);
+			context.fill();
+		}
+		
+		var drawTriangle = function(x, y, size) {
+
+			context.beginPath();
+			// Logic A
+			// Draw a triangle location for each corner from x:y 100,110 -> 200,10 -> 300,110 (it will return to first point)
+			// context.moveTo(100,110);
+			// context.moveTo(x * 10, (y * 10) + (y * 10 / .1));
+			// context.moveTo((x * size) / 10, (y * size) / 10 + (y * size/ .1));
+			// Logic B MDN ex
+			// context.moveTo(75,50);
+			// context.moveTo(size + (size / 2), size);
+			context.moveTo((x + (x / 2)) / size, size);
+			
+			// Logic A
+			// context.lineTo(200,10);
+			// context.lineTo(x * 20, y);
+			// context.lineTo((x * size) * 20, size);
+			// Logic B MDN ex
+			// context.lineTo(100,75);
+			// context.lineTo(size * 2, size + (size / 2));
+			context.lineTo((x * 2) / size, (y + (y / 2)) / size);
+			
+			// Logic A
+			// context.lineTo(300,110);
+			// context.lineTo(x * 30, (y * 10) + (y * 10 / .1));
+			// context.lineTo((x * size) * 30, (y * size) / 10 + (y * size/ .1));
+			// Logic B MDN ex
+			// context.lineTo(100,25);
+			// context.lineTo(size * 2, size / 2);
+			context.lineTo((x * 2) / size), (y / 2) / size;
+			
+			// context.closePath();
+			context.fill();
+		}
+		
+		// basic mmouseover interactions // e is the position how far from top and left
+		$canvas.on("mousemove", function(e) {
+			// sole.log(e.pageX, e.pageY);
+			var offset = $canvas.offset();
+			var x = e.pageX - offset.left; // .pageX is an attribute of the event
+			var y = e.pageY - offset.top;
+			// context.fillRect(x, y, 10, 10);
+			// only draw if brush is active
+			if (brush.active) {
+				// context.fillRect(x, y, 10, 10);
+				// drawCircle(x, y, 10); // size from center of circle
+				context.fillStyle = brush.color; // set before draw
+				if (brush.shape == "circle") {
+					drawCircle(x, y, brush.size); 
+				} else if (brush.shape == "square") {
+					drawRect(x, y, brush.size);
+				} else if (brush.shape == "triangle") {
+					drawTriangle(x, y, brush.size);
+				}
+			}
+		});
+		
+		// represents the state of drawing, state of the app
+		// keep track of whether the mouse button is up or down
+		
+		// state of the brush
+		// what kind of drawing - square, circles, spraycan, line
+		
+		
+		$canvas.on("mousedown mouseup", function(e) {
+			console.log(e.type);
+			brush.active = e.type == "mousedown";
+		});
+		
+		var shapes = $(".shape");
+		shapes.on("click", function(e) {
+			var $this = $(this);
+			var shape = $this.attr("data-shape"); // getter
+			brush.shape = shape;
+		});
+		
+		var sizes = $(".size");
+		sizes.on("click", function() {
+			var $this = $(this);
+			var size = $this.attr("data-size"); // getter
+			brush.size = size;
+			});
+			
+			// model
+			// view brush
+			// script
+			
+		var colors = $(".color");
+			colors.on("click", function () {
+			var $this = $(this)
+			var color = $this.attr("data-color");
+			brush.color = color;
+	});
+		
+		
+		</script>		
+	</body>
+</html>	
