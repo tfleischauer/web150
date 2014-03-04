@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Magic 8 Ball</title>
+    <meta charset="utf8">
+  </head>
+	<body>
+	
+		<!-- <input type="button" class="" data="">Press for Magic 8</input><br /> -->
+		<!-- <input type="button" class="yes" data-category="">Press for Yes</input><br /> -->
+		<!-- <input type="button" class="no" data-category="">Press for No</input> -->
+	
+		<!-- <input id="search"> -->
+		<button id="getFortune">Get Fortune!</button>
+	
+		<!-- <div id="fortune"></div> -->
+		<div class="fortune"></div>
+
+		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+		<script>
+		
+			// var result;
+		
+			// var request = $.ajax("index.html"); // not searching in page, goes outside of page // request is asking for promise.
+			// "done" is the actual promise if granted, otherwise "fail" if not granted
+			//var request = $.ajax("http://thomaswilburn.net:8080/magic8", {
+				//dataType: "jsonp" // what we expect back
+			// });
+			
+			//request.done(function(data) { // pass in data from server
+				// console.log(data);
+				// result = data;
+				//var body = $("body"); //make a body
+				//var ul = $("<ul></ul>"); // creating ul for page, doesn't have a home
+				//for (var i = 0; i < data.magic8.length; i++) {
+					// body.append("Index" + i + " = " data.whatever[i]);
+					//var li = $("<li></li>"); // for each item
+					//li.html(data.magic8[i]); // innerHTML implied
+					//ul.append(li); 
+				//}
+				//body.append(ul); // *until here // li.html(data.hello[i]);
+			
+			//});
+			
+			var askOracle = function() {
+
+				var requestJSONP = $.ajax("http://thomaswilburn.net:8080/magic8", {
+					dataType: "jsonp",
+					//jsonpCallback: "fooga"
+				});
+				
+				requestJSONP.fail (function() {
+					console.log("Request failed");
+				});
+				
+				var m8result;
+	
+				requestJSONP.done(function(data) {
+					// console.log("from JSONP!", data);
+					m8result = data;
+					$(".fortune").empty(); // clear out any previous text results in the div
+					// var body = $("body"); //makes a body // don't need to make a body because body tag is declared
+					// var makeParagraph = $("<p></p>"); // creating p for page, doesn't have a home // home for this assignment is div class="fortune"
+					for (var i = 0; i < data.magic8.length; i++) {
+						// $(".fortune").append(data.magic8[i])
+						// $(".fortune").append(data.magic8)
+						var x;
+						x.html(data.magic8[i]);
+					}
+						
+					// }
+					// listen for button push
+						// var yes = $(.yes);
+						// var no = $(.no);
+					// if button is pushed
+					
+					// if class is equal to yes or no
+					// if (button.yes) {
+						//code
+					// }
+					
+					// call magic8 with yes or no attribute
+					// if (magic8.yes) {
+						// m8result =
+					// } else {
+						// m8result =
+					// }
+					
+					// body.append(data.magic8);
+					// body.append(data);
+					// p.html(data.magic8);
+					// p.html(data);
+					// $(p).html(data);
+					// p.fadeIn();
+					// body.append(p);
+					
+					// $(".m8results").fadeIn();
+					
+	
+	
+					// $('#fortune').html('This space intentionally left blank.');
+					// $('#fortune').html(p.fadeIn());
+					// $('.fortune').html(m8results.fadeIn());
+					
+					// $('.fortune').html((".m8results").fadeIn());
+					// $('.m8results').html((".fortune").fadeIn());
+					$('.fortune').append(x);
+				
+					
+				});
+				
+			};
+			
+			var getFortune = $("#getFortune");
+			getFortune.on("click", function() {
+				// var value = $("#search").val();
+				askOracle();	
+			});
+			
+
+			
+		</script>
+	</body>
+</html>
