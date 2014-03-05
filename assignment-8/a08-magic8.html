@@ -1,51 +1,25 @@
 <!doctype html>
 <html>
   <head>
-    <title>Magic 8 Ball</title>
+    <title>A8 | Magic 8 Ball</title>
     <meta charset="utf8">
   </head>
 	<body>
 	
-		<!-- <input type="button" class="" data="">Press for Magic 8</input><br /> -->
-		<!-- <input type="button" class="yes" data-category="">Press for Yes</input><br /> -->
-		<!-- <input type="button" class="no" data-category="">Press for No</input> -->
-	
-		<!-- <input id="search"> -->
 		<button id="getFortune">Get Fortune!</button>
-	
-		<!-- <div id="fortune"></div> -->
 		<div class="fortune"></div>
+		
+		<!-- <button id="optimistic" data-category="">Get Optimistic Fortune</button><br /> -->
+		<!-- <button id="pessimistic" data-category="">Get Pessimistic Fortune</button> -->
 
 		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
 		<script>
-		
-			// var result;
-		
-			// var request = $.ajax("index.html"); // not searching in page, goes outside of page // request is asking for promise.
-			// "done" is the actual promise if granted, otherwise "fail" if not granted
-			//var request = $.ajax("http://thomaswilburn.net:8080/magic8", {
-				//dataType: "jsonp" // what we expect back
-			// });
-			
-			//request.done(function(data) { // pass in data from server
-				// console.log(data);
-				// result = data;
-				//var body = $("body"); //make a body
-				//var ul = $("<ul></ul>"); // creating ul for page, doesn't have a home
-				//for (var i = 0; i < data.magic8.length; i++) {
-					// body.append("Index" + i + " = " data.whatever[i]);
-					//var li = $("<li></li>"); // for each item
-					//li.html(data.magic8[i]); // innerHTML implied
-					//ul.append(li); 
-				//}
-				//body.append(ul); // *until here // li.html(data.hello[i]);
-			
-			//});
 			
 			var askOracle = function() {
-
-				var requestJSONP = $.ajax("http://thomaswilburn.net:8080/magic8", {
-					dataType: "jsonp",
+				// not searching in page, goes outside of page // request is asking for promise.
+				// "done" is the actual promise if granted, otherwise "fail" if not granted
+				var requestJSONP = $.ajax("http://thomaswilburn.net:8080/magic8", { 
+					dataType: "jsonp", // what we expect back
 					//jsonpCallback: "fooga"
 				});
 				
@@ -53,55 +27,40 @@
 					console.log("Request failed");
 				});
 	
-				requestJSONP.done(function(data) {
+				requestJSONP.done(function(data) { // pass in data from server
 					// console.log("from JSONP!", data);
 					$(".fortune").empty(); // clear out any previous text results in the div
-					// var body = $("body"); //makes a body // don't need to make a body because body tag is declared
-					// var makeParagraph = $("<p></p>"); // creating p for page, doesn't have a home // home for this assignment is div class="fortune"
-					for (var i = 0; i < data.answers.answer.length; i++) {
-						 // make the variable a jQuery Object by adding the $ in front of it
-						var $fortuneDiv = $(".fortune"); // use jQuery to find the .fortune div, and assign the div to a variable
-						fortuneDiv.html(data.answers.answer[i]); // fill the fortuneDiv with the text from each answer in the answers object
+					var makeParagraph = $("<p></p>"); // creating p for page, doesn't have a home yet, home for this assignment is div class="fortune"
+					for (var i = 0; i < data.answer.length; i++) {
+						var fortuneDiv = $(".fortune"); // use jQuery to find the .fortune div, and assign the div to a variable
+						makeParagraph.append(data.answer[i]); // put each answer in the makeParagraph variable
+						// fortuneDiv.html(makeParagraph.fadeIn("slow")); // innerHTML implied
 					}
 						
-					// }
 					// listen for button push
-						// var yes = $(.yes);
-						// var no = $(.no);
+						// var optimistic = $("#optimistic");
+						// var pessimistic = $("#pessimistic");
 					// if button is pushed
 					
-					// if class is equal to yes or no
-					// if (button.yes) {
+					// if class is equal to optimistic or pessimistic
+					// if (button.optimistic) {
 						//code
 					// }
 					
-					// call magic8 with yes or no attribute
-					// if (magic8.yes) {
+					// call category with optimistic or pessimistic attribute
+					// if (category.optimistic) {
 						// m8result =
 					// } else {
 						// m8result =
 					// }
 					
-					// $('#fortune').html('This space intentionally left blank.');
-					// $('#fortune').html(p.fadeIn());
-					
-					// fortuneDiv.append(data);
-					// fortuneDiv.html(data);
-					// $(".fortune").html(data);
-					// $(".fortune").fadeIn();
-					    	
-					
-					// $('.fortune').html(("x").fadeIn());
-					$('.fortune').append(fortuneDiv);
-				
-					
+					fortuneDiv.html(makeParagraph.fadeIn("slow")); // works in th e loop too.
 				});
 				
 			};
 			
 			var getFortune = $("#getFortune"); // find the id for the button
 			getFortune.on("click", function() {
-				// var value = $("#search").val();
 				askOracle();	
 			});
 			
