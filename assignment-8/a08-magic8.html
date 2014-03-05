@@ -52,20 +52,16 @@
 				requestJSONP.fail (function() {
 					console.log("Request failed");
 				});
-				
-				var m8result;
 	
 				requestJSONP.done(function(data) {
 					// console.log("from JSONP!", data);
-					m8result = data;
 					$(".fortune").empty(); // clear out any previous text results in the div
 					// var body = $("body"); //makes a body // don't need to make a body because body tag is declared
 					// var makeParagraph = $("<p></p>"); // creating p for page, doesn't have a home // home for this assignment is div class="fortune"
-					for (var i = 0; i < data.magic8.length; i++) {
-						// $(".fortune").append(data.magic8[i])
-						// $(".fortune").append(data.magic8)
-						var x;
-						x.html(data.magic8[i]);
+					for (var i = 0; i < data.answers.answer.length; i++) {
+						 // make the variable a jQuery Object by adding the $ in front of it
+						var $fortuneDiv = $(".fortune"); // use jQuery to find the .fortune div, and assign the div to a variable
+						fortuneDiv.html(data.answers.answer[i]); // fill the fortuneDiv with the text from each answer in the answers object
 					}
 						
 					// }
@@ -86,32 +82,24 @@
 						// m8result =
 					// }
 					
-					// body.append(data.magic8);
-					// body.append(data);
-					// p.html(data.magic8);
-					// p.html(data);
-					// $(p).html(data);
-					// p.fadeIn();
-					// body.append(p);
-					
-					// $(".m8results").fadeIn();
-					
-	
-	
 					// $('#fortune').html('This space intentionally left blank.');
 					// $('#fortune').html(p.fadeIn());
-					// $('.fortune').html(m8results.fadeIn());
 					
-					// $('.fortune').html((".m8results").fadeIn());
-					// $('.m8results').html((".fortune").fadeIn());
-					$('.fortune').append(x);
+					// fortuneDiv.append(data);
+					// fortuneDiv.html(data);
+					// $(".fortune").html(data);
+					// $(".fortune").fadeIn();
+					    	
+					
+					// $('.fortune').html(("x").fadeIn());
+					$('.fortune').append(fortuneDiv);
 				
 					
 				});
 				
 			};
 			
-			var getFortune = $("#getFortune");
+			var getFortune = $("#getFortune"); // find the id for the button
 			getFortune.on("click", function() {
 				// var value = $("#search").val();
 				askOracle();	
