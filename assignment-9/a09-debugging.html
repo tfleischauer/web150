@@ -1,0 +1,133 @@
+<!-- This code uses jQuery to listen for click events on two anchor tags, then with each click on the 'next' button advances the view displayed via CSS in the 'slides' div to the next 'section' in the html. Once a section has been advanced, the user can select previous to navigate back to the first slide. -->
+
+<!doctype html>
+<html>
+<head>
+  <title>Broken Windows</title>
+  <meta charset="utf-8">
+</head>
+<body>
+  <div class="slides">
+    <section>
+      <h1>THIS IS A SLIDE</h1>
+    </section>
+    <section>
+      <h2>Another day, another slide</h2>
+      <ul>
+        <li>Not the first slide</li>
+        <li>Not the last slide</li>
+        <li>Hence: middle slide?</li>
+      </ul>
+    </section>
+    <section>
+      <h2>All good things...</h2>
+      <p>
+        This is the last slide
+      </p>
+    </section>
+  </div> <!-- end .slides div -->
+
+  <nav class="slide-controls">
+    <a class="previous">Previous</a>
+    <a class="next">Next</a>
+  </nav>
+  <script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script>
+
+    // using jQuery, find the anchor element in the .slide-controls class
+    // .on is an event listener
+    // when a click event occurs on one of the anchor tags in the .slide-controls nav class, call the function
+    $(".slide-controls a").on("click", function() {
+
+      // make a jQ variable called this
+      // with jQ, find something (probably an event) in this document
+      var $this = $(this);
+
+      // make a variable called current
+      // with jQ, find the .slides class, .slides is a div
+      // also with jQ, use the jQ Selector called :visible. :visible selects all elements that are visible
+      // Summary: Put any section elements in the div labelled with the class '.slides' (that div will also have the status of 'visible') in the variable called 'current' 
+      var current = $(".slides section:visible");
+
+      // make a variable called slide
+      var slide;
+
+      // whatever value was placed in the jQ variable called $this, will be the class name of the anchor tag that was click on in the nav class called .slide-controls
+      // if the value of $this contains a value and the comparison of the value stored in $this and '.next' is the same (if '$this' contains the class '.next', the comparison is true,)
+      // is() is a JQ function that checks the current matched set of elements against a selector, element, or jQ object and returns true if at least one of these elements matches the gives arguments
+      // so, if the class of .next was clicked .. if that is true do the next line
+      if ($this.is(".next")) {
+
+        // the variable called 'slide' gets the the contents of the variable called 'current', 
+        // and current has values that jQ found that are in the div class called .slides. Specifically, 'current' has values that jQ found that have a section element with all section elements that have a visible status, this status is read via the jQ Selector :visible.
+        // with the information about the location of information and status (whether the element is visible or not) in the variable just described, call the jQ function called 'next'.
+        // next() is a jQ function that gets the immediately following sibling of each element in a set of matched elements. If a selector is provided,
+        // next() retrieves the next sibling only if it matches that selector.
+        slide = current.next();
+
+        // if the jQ variable called '$this' does not contain the class called .next, but instead contains the class called ",previous", do the next line
+      } else if ($this.is(".previous")) {
+
+        // the variable called 'slide' gets the value stored in 'current' which contains the div with the 'section' element with a class of .slides and status of either visible or not visible
+        // .prev() is a jQ function that gets the immediately preceding sibling of each element in the set of matched elements 
+        slide = current.prev();
+      }
+
+      // use jQ to find the div class called ".slides" and erase the 'section' in it by using the jQ class .hide()
+      // the jQ class .hide() will hide the matched elements, in this case the div with the class labelled '.slides' and the 'section' element within the .slides class
+      $(".slides section").hide();
+
+      // whatever value that was stored in the variable slide, show it with a jQ fadeIn function in the div with the class .slides, with an element 'section' that has visible status determined via jQ's :visible Selector
+      slide.fadeIn();
+    });
+    // using jQ, search the DOM of assignment.html to find the class called .slides, which is a div
+    // :not() selects all elements that do not match the given elements
+    // :first is a jQ Selector that selects the first matched element
+    // .hide() is a jQ function that hides a matched element
+    // Summary: find the div called .slides. within .slides find 'section' and select every element except the first element, then hide all the selected elements except the first element. 
+    // Basically, this line is a reset to the first slide.
+    $(".slides section:not(:first)").hide();
+	
+  </script>
+  
+  <style>
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.slides section {
+  display: block;
+  width: 800px;
+  height: 600px;
+  margin: auto;
+  background: #DDD;
+  background: radial-gradient(white, #DDD);
+  padding: 50px;
+  font-size: 48px;
+}
+.slides section > * {
+  margin: auto;
+  display: block;
+}
+.slides h1, h2 {
+  text-align: center;
+}
+.slides h1 {
+  font-size: 200%;
+}
+.slides h2 {
+  font-size: 150%;
+}
+.slide-controls {
+  text-align: center;
+}
+.slide-controls a {
+  display: inline-block;
+  width: 200px;
+  padding: 20px;
+  background: #AAA;
+}
+  </style>
+</body>
+</html>
