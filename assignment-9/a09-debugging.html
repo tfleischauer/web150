@@ -79,15 +79,15 @@
           // called ",previous", do the next line
       } else if ($this.is(".previous")) {
 
-        // the variable called 'slide' gets the value stored in 'current' which contains the div with the 'section' element with a class 
-        // of .slides and status of either visible or not visible
+        // the variable called 'slide' gets the value stored in 'current' which contains the div with the 'section' element 
+          // with a class of .slides and status of either visible or not visible
         // .prev() is a jQ function that gets the immediately preceding sibling of each element in the set of matched elements 
         slide = current.prev();
       }
 
       // use jQ to find the div class called ".slides" and erase the 'section' in it by using the jQ class .hide()
-      // the jQ class .hide() will hide the matched elements, in this case the div with the class labelled '.slides' and the 'section' 
-        // element within the .slides class
+      // the jQ class .hide() will hide the matched elements, in this case the div with the class labelled '.slides' and the 
+        // 'section' element within the .slides class
       $(".slides section").hide();
 
       // whatever value that was stored in the variable slide, show it with a jQ fadeIn function in the div with the class .slides, 
