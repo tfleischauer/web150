@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Furniture Farm Mobile</title>
+<meta charset="UTF-8" />
+<meta name="robots" content="noindex, nofollow"/>
+
+<!-- Remy Sharp Shim --> 
+<!--[if lt IE 9]>
+<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script> 
+<![endif]-->
+
+<link href="css/furniture-farm-theme/jquery-ui-1.10.4.custom.css" rel="stylesheet">
+<script src="js/jquery-1.10.2.js"></script>
+<script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+<script>
+		// page load function
+		// annonymous function doesn't have a name
+		// $(document).ready(function() {
+		// use jQuery instead of an $ if plugins have the same name and can kill each other
+		$(function() {
+			// alert("testing");
+			// like css comma separated vales
+			//$("#tags").tags();
+
+		});
+	
+</script>
+
+<!-- <link href="style.css" rel="stylesheet" /> -->  
+<style type="text/css">
+<!--
+
+/* RESETS */
+
+body, body * { /* this zeros out the default margin and padding styles on the body tag and everything nested inside the body tag. */
+	margin: 0;
+	padding: 0;		
+}
+
+/* END RESETS */
+
+/* DEVO ONLY -- delete when no longer needed */
+/*
+div, header, nav, aside, footer, img {
+	border: 1px solid red;	
+}*/
+
+/* END DEVO */
+
+/* GLOBAL STYLES */
+body {
+	font-family: Helvetica, Arial, sans-serif;	
+	line-height: 1.4;
+	color:#f2ebdc;
+	font-size:100%;
+	background-color: rgba(119,157,166,.15)
+}
+
+a {
+	color:#f2ebdc;
+	text-decoration:none;	
+}
+
+a:link {
+	text-decoration:none;		
+}
+
+a:visited {
+	
+}
+
+a:hover,
+a:focus {
+	text-decoration:underline;	
+}
+
+a:active { }
+
+/* END GLOBAL STYLES */
+
+#wrapper {
+	width:360px;
+	margin:auto;
+	background-image: url("images/wood-dark-wooden-planks-blended-overlay-opacity62-140-48-48-400x848px.jpg");
+	background-repeat:no-repeat;
+	padding: 10px 20px 10px 20px;
+	margin:25px auto;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+}
+
+#contact {
+	text-align:right;
+	letter-spacing:0.1em;
+	text-transform:uppercase;
+	font-size: 75%; /* 12px / 16px */
+}
+
+#logo {
+	height:53px;
+	background-image: url("images/web114-furnitureFarm-logo-330x53px.png");
+	background-repeat:no-repeat;
+	background-position:40% 50%;
+	text-align:center;
+	padding:20px 20px 20px 20px;
+}
+
+/*#search {*/
+.ui-widget {
+	text-align:right;
+	text-transform:uppercase;
+	font-size: 90%; /* 12px / 16px */	
+}
+
+.ui-widget .ui-widget {
+    font-size: 0.75em;
+}
+
+#content {
+	font-size:80%;
+	margin:20px 0px 20px 0px;
+	clear:both;	
+}
+
+#hero {
+	background-image: url("images/rochester-used-furniture-red-couch-360x159px.jpg");
+	background-repeat:no-repeat;
+	background-position:center;
+	height:159px;
+	font-size:80%;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+}
+
+#hero h4 {
+	font-style:italic;
+	/*text-align:center;*/
+	color:#311112;
+	/*vertical-align:text-bottom;*/
+	padding:7px;
+	font-size:105%;
+}
+
+.cta {
+	margin-top:20px;
+	/*border: 1px solid;*/
+	padding:10px 20px 10px 20px;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	background-color: rgba(119,157,166,.66); /*#779da6;*/
+	line-height:1.5em;
+	box-shadow: 3px 3px 3px #311112;
+}
+
+.cta a:link {
+	text-decoration:none;		
+}
+
+.cta a:visited {
+	
+}
+
+.cta a:hover,
+.cta a:focus {
+	text-decoration:underline;
+	background-color: rgba(119,157,166,1); 	
+}
+
+.cta a:active { }
+
+#copyright span {
+	float:right;
+}
+
+footer {
+	font-size:70%;
+	margin-top:20px;		
+}
+
+.above-hero-label {
+	margin-bottom:10px;	
+	font-style:italic;
+}
+
+h4 {
+	/*text-transform:uppercase;*/
+	/*font-variant:normal;*/
+	letter-spacing:0.03em;		
+}
+
+#copyright {
+	margin-top:4px;	
+}
+
+input {
+	border-radius:2px;
+	-moz-border-radius:2px;
+	-webkit-border-radius:2px;
+}
+
+.ui-autocomplete-input {
+	font-size:80%;
+}
+
+
+-->  
+</style> 
+
+<script>
+  $(function() {
+	var availableTags = [
+	  
+	  "Alarm-Clocks",
+	  "Bathroom",
+	  "Bedroom",
+	  "Ceiling-Lamps",
+	  "Chairs",
+	  "Clocks",
+	  "Coffee-Tables",
+	  "Couch",
+	  "Den",
+	  "Desk-Lamps",
+	  "Dressers",
+	  "End-Tables",
+	  "Floor-Lamps",
+	  "Gargoyles",
+	  "Lamps",
+	  "Lawn-Ornaments",
+	  "Living-Room",
+	  "Sofa",
+	  "Statues",  
+	  "Tables",	  
+	  "Wall-Clocks",	  
+	  "Window-Boxes",
+	  
+	  ];
+	  $( "#tags" ).autocomplete({
+	  source: availableTags
+	});
+  });
+</script>
+
+ <script>
+$(function() {
+  $( "input[type=submit], button" )
+  .button()
+  .click(function( event ) {
+  event.preventDefault();
+  });
+});
+</script>
+
+ 
+</head>
+<body>
+
+<div id="wrapper">
+
+<!--  <div id="menu-div">
+      <a href="javascript:;">Menu</a>
+      
+      <ul id="menu">
+        <li class="ui-state-disabled"><a href="javascript:;">Home</a></li>
+        <li><a href="javascript:;">Living Room</a></li>
+        <li><a href="javascript:;">Office</a></li>
+        <li><a href="javascript:;">Bedroom</a></li>
+        <li><a href="javascript:;">Bathroom</a></li>
+      </ul>
+  </div>-->
+
+<div id="contact">
+	<p><a href="javascript:;">About</a> | <a href="javascript:;">Contact</a></p>
+
+</div> <!-- end contact -->
+
+
+
+<div id="logo">
+
+</div>
+
+<!--<div id="search">-->
+    <div class="ui-widget">
+    <label for="tags"><button>Search</button></label>
+    <input id="tags">
+  </div>
+<!--</div> --><!-- end search -->
+
+  <div id="content">
+      <h2>Lorem Ipsum</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vel mi quis erat vulputate consectetur. Donec rutrum pellentesque condimentum.</p>
+  </div>
+  
+  <h3 class="above-hero-label">Today's Featured Item</h3>
+  
+  <div id="hero">
+      <h4>Only $599</h4>
+  </div>
+  
+  <div class="cta">
+   <!--<button>-->
+      <h4>Consign With Us</h4>
+      <p>Donec rutrum pellentesque condimentum.</p>  
+  <!-- </button>-->
+    </div>
+
+  
+  <div class="cta">
+      <h4>Year End Sale</h4>
+      <p>Praesent vel mi quis erat vulputate consectetur.</p>   
+  </div>
+
+  <div class="cta">
+      <h4>Free Delivery</h4>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>   
+  </div>
+
+
+<footer>
+	<div id="nav-footer">
+    	<p><a href="javascript:;">Home</a> | <a href="javascript:;">About</a> | <a href="javascript:;">Contact</a> | <a href="javascript:;">Terms of Use</a></p>
+    </div>
+    
+    <div id="copyright">
+    	<p>&copy 2014 Furniture Farm <span><a href="javascript:;">Log In</a></span></p>
+    </div>
+</footer>
+
+
+</div> <!-- end wrapper -->
+
+
+<!-- begin validation buttons -->
+<p>
+ <a href="http://validator.w3.org/check?uri=referer">
+  <img src="http://www.w3.org/html/logo/badge/html5-badge-h-solo.png" 
+  width="31" height="32" alt="valid HTML5" />
+ </a>
+ <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">
+  <img src="http://jigsaw.w3.org/css-validator/images/vcss" 
+   alt="Valid CSS3" height="31" width="88" />
+ </a>
+</p>
+<!-- end validation buttons -->
+</body>
+</html>
+
