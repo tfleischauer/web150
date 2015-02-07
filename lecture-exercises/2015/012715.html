@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf8>
+    <title>Object Lesson</title>
+  </head>
+  <body>
+    One more week in the console...
+
+    <script src="http://thomaswilburn.net/scc/data/quakes.js"></script>
+    <script>
+var neko = {
+  weight: 18,
+  legs: 4,
+  hungry: true,
+  color: "black and orange"
+};
+
+//feed the cat
+neko.hungry = false;
+
+//oh noes!
+neko.sick = true;
+
+//cured
+delete neko.sick;
+
+var wallace = {};
+wallace.breed = "mutt";
+wallace.neurotic = true;
+wallace.name = "Wallace Wilburn";
+wallace.weight = 62;
+wallace.daycare = true;
+
+var prop = "weight";
+// var prop = prompt("What do you want to know about my dog?");
+// console.log(prop);
+// console.log(wallace[prop]); // shows value by string name
+
+// console.log(wallace["weight"]); //NO! use wallace.weight // dont put strings in brackets use variables
+// console.log(wallace.weight);
+
+for (var property in neko) {
+  // console.log(property);
+  // console.log(neko[property]);
+}
+
+var groceryList = {
+  produce: {
+    fruit: ["apples"],
+    vegetables: ["potatoes", "fennel"]
+  },
+  meat: ["chicken"],
+  iceCream: ["chunky monkey"]
+};
+
+// console.log(groceryList.produce); // shows two arrays
+// console.log(groceryList.produce.vegetables); // shows content of specified array
+
+var quakes = [];
+for (var i = 0; i < magnitude.length; i++) {
+  var q = {
+    magnitude: magnitude[i],
+    depth: depth[i],
+    type: type[i]
+  };
+  quakes.push(q);
+}
+
+console.log(quakes);
+
+var biggest = quakes[0];
+for (var i = 0; i < quakes.length; i++) {
+  var quake = quakes[i];
+  if (quake.magnitude > biggest.magnitude) {
+    biggest = quake;
+  }
+}
+console.log("Biggest quake: " + biggest.magnitude);
+console.log("Quake depth was: " + biggest.depth);
+console.log("Quake type: " + biggest.type);
+
+var obj = {
+  "this is a key with spaces and dots.": true
+};
+obj["1direction"] = false;
+
+var facebookMeta = {
+  "og:title": "This is my sharing title",
+  "og:site_name": "thomaswilburn.net"
+};
+
+console.log(facebookMeta["og:title"]);
+
+    </script>
+  </body>
+</html>
+
+
+
+<!-- -->

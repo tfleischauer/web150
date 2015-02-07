@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+	<title>Tabs! Lecture Practice</title>
+    <meta charset="utf-8">
+	<style>
+		.tabs li{
+		  display:inline-block;
+		  border: 1px solid black;
+		  border-radius: 4px 4px 0 0; /* top right bottom left */
+		  padding: 4px 12px;
+		  background:#DDD;
+		}
+		
+		.tabs li.active {
+			background:#FFF;
+			border-bottom: 1px solid red;	
+		}
+		
+		.tab {
+			height:200px;
+			background:#EEE;
+			font-size:32px;
+		}
+	</style>
+
+</head>
+<body>
+
+<ul class="tabs">
+	<li> <a href="#one">One</a> <!-- href in page links are valid id selectors -->
+	<li> <a href="#two">Two</a>
+	<li> <a href="#three">Three</a>
+</ul>
+
+<div class="tab" id="one">First tab</div>
+<div class="tab" id="two">Second tab</div>
+<div class="tab" id="three">Third tab</div>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+// find the elements we want to monitor for events. .tabs class is what we are looking for. "a" is what we are selecting for.
+var tabLinks = $(".tabs a");
+// start listening for events. On is an event listener. When the user clicks, run the function. the function will cancel the browser's default event behavior.
+tabLinks.on("click", function(e) {
+	// hide current tab
+	// first find what to act on which is elements with a class of .tab. Note: (jQ or function?) will not find any items that are off screen or overflow:hidden.
+	$(".tab:visible").hide(); // OK to use $(".tab:visible()").hide(); ? it works.
+	// get the <a> that was clicked, wrap in jQuery
+	$this = $(this);
+	// get the <a> tag's (the one that was clicked) href attribute
+	var href = $this.attr("href");
+	// find the tab with the href value found on the last line, put the value in a variable
+	var tab = $(href);
+	// call the link item's href and show it's related div contents
+	tab.fadeIn();
+	// prevent default browser behavior. cancels the default navigation. important for progressive implmentation (allowing the page to work if JavaScript is deactivated.)
+	e.preventDefault();
+	// remove any .active classes on the page so that we can assign a special class to whatever gets clicked on to call different CSS rules.
+	// look for .active, then remove .active
+	$(".active").removeClass("active"); // why not "." here to remove?
+	// find the li tag that was clicked
+	// start with class that I clicked and then work your way up.
+	// looking for the closest _____________. Doesn't care how many tags between "them"? 
+	var li = this.closest("li");
+	// add the active class
+	li.addClass("active");	
+});
+
+// Default diplay: first tab div, auto "click" on-load of page
+tabLinks.filter(":first").click();
+
+</script>

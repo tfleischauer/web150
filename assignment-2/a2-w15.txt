@@ -1,0 +1,9 @@
+#2 - Choose Your Own Adventure - Due: Jan. 20
+
+We now know how to make decisions on a page in response to user input (that is to say, prompt() and confirm()). That means we can write a digital version of one of Western civilization's great innovations in literature: the Choose Your Own Adventure story. Create a page on a story or topic of your choice, using JavaScript to ask questions and then output to the console in response to the answers. The resulting decision tree should involve the following characteristics:
+
+    At least one nested choice — meaning an if or switch inside of another conditional statement.
+    At least one choice based on a string comparison.
+    At least one choice based on a numerical comparison, with at least three potential outcomes. 
+
+You can make this "adventure" anything you want. It can be a fictional story, or it can be a walkthrough a given topic. Past students have done things like a guide to local restaurants (delicious!), a tax calculator (helpful!), or a trip planner (jealousy-inducing!). 

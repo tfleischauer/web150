@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<title>Question and Answer</title>
+	<meta charset="utf8">
+</head>
+<body>
+
+<script>
+
+var hair = confirm('do you mind pet hair?');
+if (hair) {
+	var catOrDog = prompt("Cat or dog?");
+	catOrDog = catOrDog.toLowerCase();
+	if (catOrDog == "dog" || catOrDog == "mongolian deer") {
+		console.log("Very fat pony");
+	} else if (catOrDog == "cat") {
+		console.log("Marmoset");
+	} else {
+		console.log("Chinchilla");
+	}
+	/*
+	switch (catOrDog) {
+		case "dog":
+		case "mongolian deer":
+			console.log("Very fat pony");
+			break;
+		
+		case "cat":
+		case "gorilla":
+			console.log("Marmoset");
+			break;
+		
+		default:
+			console.log("Chinchilla");
+	}
+	*/
+} else {
+	var pets = prompt("How many pets do you have?");
+	pets = Number(pets);
+	if (pets >= 2 && pets <= 5) {
+		console.log("Turtle");
+	} else if (pets > 5) {
+		console.log("No more!");
+	} else {
+		console.log("Komodo dragon");
+	}
+	/*
+	if (pets < 2) {
+		//dragon
+	} else if (pets < 5) {
+		//turtle
+	} else {
+		//nothin'
+	}
+	*/
+}
+</script>
+</body>
+</html>
+
+
+
+

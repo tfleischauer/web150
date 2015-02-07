@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<title>Event Orientation</title>
+	<meta charset=utf8>
+</head>
+<body>
+
+This space intentionally left blank.
+
+	<div class="clickable" id=one>
+		One
+	</div>
+
+	<div class="clickable" id=two>
+		Two	
+	</div>
+	
+	<input type="text" id="sandbox">
+	
+<style>
+.green { background: #CFC; }
+</style>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+
+/*var body = $("body");
+body.on("click", function() {
+	console.log("Hello, world!");
+});*/
+
+var clickables = $(".clickable");
+clickables.on("click", function() {
+	var $this = $(this);
+	console.log($this.html());
+	$this.toggleClass("green");
+});
+console.log("next");
+
+clickables.on("mousemove", function(e) {
+	var $this = $(this);
+	console.log($this.attr("id"));
+	console.log(e);
+	if ($this.attr("id") == "one") {
+		$this.css("color", "blue");
+	}
+});
+
+var sandbox = $("#sandbox");
+sandbox.on("keyup", function() {
+	var $this = $(this);
+	var value = $this.val();
+	//console.log(value);
+});
+
+sandbox.on("keydown keypress keyup change", function(e) {
+	var $this = $(this);
+	var value = $this.val();
+	console.log(e.type, value);
+});
+
+</script>
+</body>
+</html>

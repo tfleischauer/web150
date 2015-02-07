@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+	<title>Royale with Cheese</title>
+	<meta charset=utf8>
+</head>
+<body>
+
+<script src="SamuelLJackson.js"></script>
+<script>
+
+//script above creates a variable named samJackson
+//rename him
+samJackson.name = "Sam Jackson";
+console.log(samJackson.name);
+
+console.log("# of movies: " + samJackson.credits.length)
+
+//get first genre of second movie
+//console.log(samJackson.credits[1].genres[0].name)
+var credits = samJackson.credits;
+var jurassicGenres = credits[1].genres;
+console.log(jurassicGenres[0].name);
+
+//dump each movie object to the console
+var longest = { runtime: 0 };
+for (var i = 0; i < credits.length; i++) {
+	var movie = credits[i];
+	// console.log(movie.title + " - " + movie.character);
+	if (movie.runtime > longest.runtime) {
+		longest = movie;
+	}
+}
+console.log("Longest movie: " + longest.title, longest.runtime);
+
+//start with zero revenue
+var revenueTotal = 0;
+var budgetTotal = 0;
+//for each movie,
+for (var i = 0; i < credits.length; i++) {
+	//add the revenue to the running total
+	var movie = credits[i];
+	revenueTotal = revenueTotal + movie.revenue;
+	//revenueTotal += movie.revenue;
+	budgetTotal += movie.budget;
+	//go to next movie
+}
+//show total revenue
+console.log("Total SLJ revenue: $" + revenueTotal);
+console.log("Total SLJ investment: $" + budgetTotal);
+console.log("SLJ Profitability: $" + (revenueTotal - budgetTotal));
+
+var revenueCount = 0;
+for (var i = 0; i < credits.length; i++) {
+	if (credits[i].revenue > 0) {
+	// if (credits[i].revenue) {
+		revenueCount++;
+	}
+}
+//find an average: divide total by the number of items
+console.log("Average revenue: " + revenueTotal / revenueCount);
+
+</script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>a3-w15: Earthquake Analysis</title>
+</head>
+
+<body>
+<script src="http://thomaswilburn.net/scc/data/quakes.js"></script>
+
+<script>
+
+// assemble data from three different arrays into one array
+var quakes = [];
+for (var i =0; i < magnitude.length; i++) {
+	var q = {
+
+		magnitude: magnitude[i],
+		depth: depth[i],
+		type: type[i]
+	};
+
+	quakes.push(q);
+}
+
+// console.log("The quake array is: " + quakes); // creates a string in the console
+console.log(quakes); // creates a clickable array of Objects in the console
+
+var biggest = quakes[0];
+var depth = 0;
+for(var i = 0; i < quakes.length; i++) {
+	var q = quakes[i];
+	if(q.magnitude > biggest.magnitude) {
+		biggest = quakes[i];
+	}
+
+	depth = depth + q.depth;
+
+}
+
+console.log(depth);
+
+// 1. What was the size of the biggest earthquake this week?
+console.log("The size of the biggest earthquake this week: " +  biggest.magnitude); 
+
+// 2. What is the average depth where a quake takes place? 
+console.log("The average depth where a quake takes place is: " + (depth/quakes.length) );
+
+// 3. How many quakes have a type other than "earthquake" (e.g., "quarry blast" and "explosion") ?
+// create a counter to track notQuakes
+var notQuakes = 0;
+// loop through quakes
+for (var i = 0; i < type.length; i++) {
+// store current item
+	var item = type[i];
+	// add one to counter of not "earthquake"
+	if (item != "earthquake") {
+		notQuakes++;
+	}
+}
+
+console.log("Quakes that are not earthquakes: " + notQuakes);
+
+// 4. What's the depth of the biggest earthquake? 
+console.log("The depth of the biggest earthquake is: " + biggest.depth);
+
+// 5. What's the average magnitude of quakes with a type of "explosion"? 
+// make an array of all quakes with type of explosion
+var explosionArray = [];
+var explosionCounter = 0;
+for(var i = 0; i < quakes.length; i++) {
+	if (quakes[i].type = "explosion") {
+		explosionArray.push(quakes[i]);
+	}
+
+	explosionCounter = explosionCounter + quakes[i].magnitude;
+}
+
+// console.log(explosionArray);
+// console.log(explosionCounter);
+console.log("The average magnitude of quakes with type of '\explosion'\ is: " + explosionCounter / explosionArray.length);
+
+// 6. How many earthquakes had a magnitude greater than 2.0? 
+var counter = 0;
+for(var i = 0; i < quakes.length; i++) {
+	if (quakes[i].magnitude > 2.0) {
+		counter++;
+	}
+}
+
+console.log(counter + " quakes had a magnitude greater than 2.0");
+
+</script>
+</body>
+</html>

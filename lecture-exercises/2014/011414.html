@@ -1,0 +1,133 @@
+<!doctype html>
+<html>
+<head>
+	<title>If/when</title>
+	<meta charset="utf8">
+</head>
+<body>
+
+This space intentionally left blank.
+<script>
+/*
+var age = prompt("How old are you?");
+age = Number(age); // age * 1
+if (2014 - age > 2000) {
+	console.log("Lucky!");
+	var westCoast = confirm("Were you born on the west coast?");
+	if (westCoast) {
+		console.log("Spoiler alert!");
+	}
+} else if (2014 - age > 1980) {
+	console.log("VH1 probably has a show for you.");
+} else {
+	console.log("...");
+}
+*/
+
+var x = 12;
+var y = 13;
+
+if (x > 10) {
+	if (y < 100) {
+		console.log("do something");
+	}
+}
+
+/*
+&& = AND
+|| = OR
+! = NOT
+*/
+
+if (x > 10 && y < 100) {
+	console.log("combined!");
+}
+
+if (x < 10 || y < 100) {
+	console.log("either or");
+}
+
+if (!(x < 10)) {
+	console.log("double negative");
+}
+
+if ("false") {
+	console.log("yes");
+} else {
+	console.log("no");
+}
+/*
+var something = prompt("Question");
+console.log(something);
+if (something) {
+	//anything else == true
+	console.log("You can type!");
+} else {
+	//empty string == false
+	console.log("Ah, the quiet type.");
+}
+*/
+
+var state = "Kentucky"; //prompt("Where ya from?");
+switch (state) {
+
+	case "Washington":
+		console.log("American Goldfinch");
+	break;
+	
+	case "Virginia":
+	case "Kentucky":
+		console.log("Cardinal");
+	break;
+	
+	default:
+		console.log("I don't know.");
+
+}
+/*
+switch (answer) {
+	case "ok":
+	case "yes":
+	case "y":
+		answer = true;
+	break;
+	
+	case "no":
+	case "nope":
+	case "n":
+	case "":
+		answer = false;
+	break;
+}
+*/
+
+//baking or not baking
+var baking = confirm("Baking?");
+if (baking) {
+//if baking, pie or tart
+	var dish = prompt("Pie or tart");
+	dish = dish.toLowerCase();
+	if (dish == "pie") {
+		//pie path
+		console.log("Good luck!");
+	} else {
+		//tart path
+		console.log("Granny Smith");
+	}
+} else {
+//otherwise fruit salad or eating plain?
+	console.log("Fuji");
+}
+
+
+
+
+
+</script>
+</body>
+</html>
+
+
+
+
+

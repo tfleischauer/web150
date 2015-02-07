@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Royale with Cheese</title>
+		<meta charset=utf8>
+	</head>
+	<body>
+
+		<script src="SamuelLJackson.js"></script>
+		<script>
+		samJackson.name = "Sam Jackson";
+		console.log(samJackson.name);
+		console.log("Number of Movies: " + samJackson.credits.length);
+		
+		//get first genre of second movie
+		console.log(samJackson.credits[1].genres[0].name);
+		
+		var credits = samJackson.credits;
+		
+		var jurassicGenres = credits[1].genres;
+		console.log(jurassicGenres[1].name);
+		var releaseDate = credits[0].release_date;
+		console.log(releaseDate);
+		
+		var character = credits[1].character;
+		console.log("Sam Jackson's second movie character: " + character);
+		
+		console.log("Third movie in Sam Jackson Object is " + credits[2].title + ". Character is: " + credits[2].character);
+		
+		// whole object
+		var longest = { runtime: 0 };
+		var shortest = { runtime: Infinity };
+		for (var i = 0; i < credits.length; i++) {
+			var movie = credits[i];
+			// console.log(credits[i]);
+			// console.log(movie.title);
+			// console.log(movie.character);
+			// console.log(movie.title + " - " + movie.character);
+			if (movie.runtime > longest.runtime) {
+			    longest = movie;
+			 }
+			 
+			 if (movie.runtime < shortest.runtime) {
+			 	shortest = movie;
+			 }
+		}
+
+		console.log("Longest movie " + longest.title, longest.runtime);
+		console.log("Shortest movie " + shortest.title + " is " + shortest.runtime + " minutes long.");
+		
+		//start w/ zero revenue
+		var revenueTotal = 0;
+		var budgetTotal = 0;
+		// for each movie
+		for (var i = 0; i < credits.length; i++) {
+			//
+			var movie = credits[i];
+			revenueTotal = revenueTotal + movie.revenue;
+			// budgetTotal = budgetTotal + movie.budget;
+		    budgetTotal += movie.budget;	
+		}
+		
+		console.log("Total Revenue: $" + revenueTotal);
+		console.log("Total Budget For All Movies: $" + budgetTotal);
+		console.log("Total Profit: $" + (revenueTotal - budgetTotal));
+		
+		var revenueCount = 0;
+		for (var i = 0; i < credits.length; i++) {
+			// if (credits[i].revenue > 0) {
+			if (credits[i].revenue) {
+				revenueCount++;
+			}
+		}
+		
+		//find average: divide total by number of items
+		console.log("Average Revenue: $ " + (revenueTotal / revenueCount))
+		</script>
+		
+	</body>
+</html>

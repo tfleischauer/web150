@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cars!</title>
+</head>
+
+
+<body>
+
+	This space intentionally left blank.
+
+<script src="http://thomaswilburn.net/scc/data/cars.js"> </script>
+
+<script>
+
+	// console.log(cars[0]);
+
+	for (var i = 1; i < cars.length; i++) {
+		// show all in cars array
+		// console.log(cars[i]);
+	}
+
+// 1. Highest car ownership
+// highest.current < item.current
+var highest = cars[0];
+for (var i = 0; i < cars.length ; i++) {
+	var item = cars[i];
+	if (highest.current < item.current) {
+		highest = item;
+	}
+
+}
+console.log("the highest ownership is", highest.country);
+console.log(highest);
+
+// 2. Average ownership by first letter (See bottom)
+
+//Part 1: Arrays of countries with the same first letter grouped in an Object
+// make empty object
+var carGroups = {};
+// go through cars array
+for(var i = 0; i < cars.length; i++) {
+	// make varibale for comparison
+	var item = cars[i];
+
+	// put first letter in new letter array
+    var letter = item.country[0];
+
+    // if there is no value for the current letter in groups
+	if(!(carGroups[letter])) {
+		// make an array for the newly added letter
+		carGroups[letter] = [];
+	}
+	carGroups[letter].push(item);
+}
+
+console.log(carGroups);
+
+// See Part 2 below.
+
+// 3. Highest proportional increase
+var highestDelta = cars[0];
+for (var i = 0; i < cars.length ; i++) {
+	var item = cars[i];
+	var itemProportion = (item.current - item.previous) / item.previous;
+	var hProportion = (highestDelta.current - highestDelta.previous) / highestDelta.previous;
+	if (itemProportion > hProportion) {
+		highestDelta = item;
+	}
+}
+
+console.log("Highest proportional increase is: ", highestDelta);
+
+// 4. # < 100 / 1,000 people
+var carless = [];
+for (var i = 0; i < cars.length ; i++) {
+	if (cars[i].current < 100) {
+		carless.push(cars[i]);
+	}
+}
+console.log("Low car countries: ", carless.length);
+console.log("Low car countries arrays: ", carless);
+
+// 2. Average ownership by first letter
+
+// Part 1: Arrays of countries with the same first letter grouped in an Object
+
+// make empty object
+var groups = {};
+
+// go through cars array
+for (var i = 0; i < cars.length ; i++) {
+
+	// make varibale for comparison
+	var item = cars[i];
+
+	// put first letter in new letter array
+	var letter = item.country[0];
+	// shows each country's name and first letter
+	// console.log(item.country, letter);
+
+	// undefined is a falsey value
+	if (!groups[letter]) {
+
+		// make a new empty array that will contain objects
+		groups[letter] = [];
+	}
+
+	// push item into the object with the same first letter
+	groups[letter].push(item);
+};
+
+console.log("Countries with the same first letter grouped in an Object: ")
+console.log(groups);
+
+
+// Part 2:  Average ownership by first letter
+
+// make an Object
+var averages = {};
+
+// goes through the keys in groups (the first letters are the keys)
+for (var key in groups) {
+	// console.log(key);
+
+	// Put the value (an array of countries) associated with it's corresponding key 
+	// into the variable called value.
+	var value = groups[key];
+
+	// shows key and array
+	console.log("Shows key and array:");
+	console.log(key, value);
+
+	// tally each array item value of "current"
+	var a = 0;
+	for (var i = 0; i < value.length; i++) {
+		a = a + value[i].current;
+	}
+	// average of each letter "current"
+	var avg = a / value.length;
+
+	// re-assign each value to be the average instead of the array of Objects 
+	// (of each country that starts with the same first letter)
+	averages[key] = avg;
+}
+
+// print to console the array's key (first letter) and value (the average)
+console.log(averages);
+
+
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,5 @@
+#5 - Test-driven Selectors - Due: Feb. 10
+
+It's time to pass some tests: I've assembled a document with some True Facts about Hedgehogs and some automated testing in the upper-right corner. Save that file to your hard drive as a plain HTML file (DO NOT SAVE AS "COMPLETE") and then open it up in your text editor. You'll find that, after a some lines of HTML, there's a script tag with some incomplete code, waiting for you to fill it in.
+
+If there's a variable for the test, use that variable and assign the desired value to it. If there is not a variable, you can make one, but the test will pass or fail based on changes you need to make to the page. All questions require you to use jQuery, possibly including the manipulation functions that we've covered in class, like css() and html(). The tests are not always perfect, so let me know if you think you've got a correct answer but you can't get it to turn green. 

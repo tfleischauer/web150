@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html>
+<meta charset="utf-8">
+
+<script>
+
+// object for neko
+// object literal
+var neko = {
+	weight:18,
+	legs: 4,
+	hungry: true,
+	color: "black and orange"
+};
+
+// an array is a list, it gets square bracket
+// object is curvey brackets
+// document.body.style.background = "blue"
+
+// feed the cat
+neko.hungry = false;
+
+// assign a new property
+neko.sick = true;
+
+// get rid of sick property
+// using delete like this slows down js engine, better to just say .sick = false
+delete neko.sick;
+
+var wallace = {};
+wallace.breed = "mutt";
+wallace.neurotic = true;
+wallace.name = "Wallace Wilburn";
+wallace.weight = 62;
+wallace.daycare = true;
+
+// var prop = prompt("What do you want to know about my dog?");
+
+// console.log(prop);
+// ways to look up properties on objects
+// grabs string as variable. dynamic way of saying do something.
+// dont put strings in brackets use variables
+// console.log(wallace[prop]);
+
+//loop for objects "for in loop"
+// do not use on arrays, only on objects
+for (var property in neko) {
+	// console.log(property); // key
+	// console.log(neko[property]);  // value
+}
+
+// nesting objects inside of other objects
+// key of fruit, value of apples
+// no variables starting with numbers
+// using letters first, then numbers is OK for variable names
+
+// obj["1direction"] = false;
+
+var grocery = {
+	produce: ["apples", "fennel", "potatoes"],
+	meat: ["chicken"],
+	iceCream: ["chunky monkey"]
+};
+
+var grocery2 = {
+	produce: {
+		fruit: ["apples"],
+		vegetables: ["fennel", "potatoes"],
+	},
+	meat: ["chicken"],
+	iceCream: ["chunky monkey"]
+};
+
+// console.log(grocery2.produce.fruit);
+
+</script>
+
+</html>

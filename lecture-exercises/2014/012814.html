@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+<head>
+	<title>My First jQuery</title>
+	<meta charset="utf8">
+	<style>
+.stripe {
+	background: blue;
+}
+
+.bg { background: red; }
+
+	</style>
+</head>
+<body>
+
+	<div class="main">
+		<ul class="menu">
+			<li id="american"> Apple
+			<li> Banana Cream
+			<li> Peanut Butter
+			<li> Blackberry
+		</ul>
+	</div>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+
+/*
+SELECTORS TO USE WITH JQUERY
+- "tag" - selects by tag name: "li", "p", "a", "div"
+- ".class" - selects by class name: ".menu-item", ".wrapper"
+- "#id" - selects by id attribute: "#main", "#footer"
+- ":pseudo" - selects based on state: ":hover", "::before"
+	- NOTE: jQuery doesn't really support these, but does add its own
+		* :first
+		* :last
+		* :odd
+		* :even
+		* :gt(x) - greater than x
+- "ancestor descendent" - selects elements contained in each other: ".main li"
+- "parent > child" - selects immediately contained elements: "body > div"
+*/
+
+var menuItems = $(".menu li");
+console.log(menuItems);
+//setter - a value was provided and will be set
+menuItems.html("No pie today");
+//getter - without a value, will return the current value
+console.log( menuItems.html() );
+
+menuItems.css("color", "green");
+menuItems.css("transform", "translateX(20px)");
+var background = menuItems.css("background"); /* what is this? */
+console.log(background);
+
+menuItems.fadeOut();
+menuItems.fadeIn();
+menuItems.slideUp();
+menuItems.slideDown();
+
+//var oddItems = $(".menu li:odd");
+var oddItems = menuItems.filter(":odd");
+oddItems.addClass("stripe");
+//oddItems.removeClass("stripe");
+
+var main = $("div.main");
+//.find() -- looks for child and descendant elements
+var menu = main.find(".menu");
+
+//.closest() -- looks for parent and ancestor elements
+var div = menu.closest("div");
+console.log(div);
+
+var menuHeight = menu.height();
+console.log(menuHeight);
+menu.height(300);
+menu.width(20);
+
+var offset = menu.offset();
+console.log(offset);
+menu.offset({top: 100, left: 100});
+
+</script>
+</body>
+</html>
+
+
+
+
+
+

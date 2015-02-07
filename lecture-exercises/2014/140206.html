@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+	<title>Tabs!!!</title>
+	<meta charset="utf8">
+	<style>
+		.tabs { padding: 0; margin: 0; }
+		
+		.tabs li {
+			display: inline-block;
+			border: 1px solid black;
+			border-radius: 4px 4px 0 0;
+			padding: 4px 12px;
+			background: #DDD;
+			}
+			
+		.tabs li.active {
+			background: white;
+			border-bottom: 1px solid red;
+			}
+	
+		.tab {height: 600px; background:gray; )
+	</style>
+</head>	
+
+<body>
+	<ul class="tabs">
+		<li> <a href="#one">One</a> <!-- use closest to work up page -->
+		<li> <a href="#two">Two</a>
+		<li> <a href="#three">Three</a>
+	</ul>
+	
+	<div class="tab" id="one">
+		Tab 1
+	</div>
+	
+	<div class="tab" id="two">
+		Tab 2
+	</div>
+	
+	<div class="tab" id="three">
+		Tab 3
+	</div>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script>
+
+// find element that we want to monitor for events
+var tabLinks = $(".tabs a"); // a is what we are selecting for , looking for
+tabLinks.on("click", function(e) { // on is an event listener // need event to cancel browser event
+// hide current tab
+//first find what to act on //wont find visible if overflow hidden or off screen
+$(".tab:visible").hide();
+
+// get the <a> that was clicked
+var $this = $(this); // wrap in Jquery to make it jquery
+
+// get its href value
+var href = $this.attr("href"); // whatever you clicked, get the href value
+
+// find tab with that value
+var tab =$(href);
+
+// show it
+tab.fadeIn();
+
+// cancel the navigation
+e.preventDefault(); // most important for progressive implementation
+// remove any .active classes on the page
+$(".active").removeClass("active"); //remove calls things off page. use removeClass
+// find the <li> tag that was clicked
+// start with class I clicked on then work your way up
+var li = $this.closest("li"); // closest. don't care how many tags between us.
+// use $this to show where something is clicked
+
+// add the active class to it
+li.addClass("active");
+
+
+});
+
+// works but not best style. Says to find all classes naned .tab, then hide all of them except the first one.
+// $(".tab").not(":first").hide();
+
+// filter collection to find an action
+tabLinks.filter(":first").click(); // could call first()
+
+// same but longer and more explicit
+// var firstTab = tabLinks.filter(":first");
+// firstTab.click(); 
+
+</script>
+
+</body>
+</html>

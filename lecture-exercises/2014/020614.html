@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+<head>
+	<title>Tabs!</title>
+	<meta charset="utf8">
+	<style>
+.tabs { padding: 0; margin: 0; }
+.tabs li { 
+	display: inline-block;
+	border: 1px solid black;
+	border-radius: 4px 4px 0 0;
+	padding: 4px 12px;
+	background: #DDD;
+}
+.tabs li.active {
+	background: white;
+	border-bottom: 1px solid red;
+}
+.tab { height: 200px; background: #EEE; font-size: 32px; }
+	</style>
+</head>
+<body>
+
+	<ul class="tabs">
+		<li> <a href="#one">One</a> </li>
+		<li> <a href="#two">Two</a> </li>
+		<li> <a href="#three">Three</a> </li>
+	</ul>
+
+	<div class="tab" id="one">
+		Tab #1
+	</div>
+
+	<div class="tab" id="two">
+		Tab #2
+	</div>
+
+	<div class="tab" id="three">
+		Tab #3
+	</div>
+
+	<script src="http://code.jquery.com/jquery-2.1.0.min.js">
+	</script>
+
+	<script>
+
+//find the elements we want to monitor for events
+var tabLinks = $(".tabs a");
+tabLinks.on("click", function(e) {
+	//hide current tab
+	$(".tab:visible").hide();
+	//get the <a> that was clicked
+	var $this = $(this);
+	//get its href value
+	var href = $this.attr("href");
+	//find the tab with that value
+	var tab = $(href);
+	//show it
+	tab.fadeIn();
+	//cancel the navigation
+	e.preventDefault();
+	//remove any .active classes on the page
+	$(".active").removeClass("active");
+	//find the <li> tag that was clicked
+	var li = $this.closest("li");
+	//add the active class to it
+	li.addClass("active");
+});
+
+//$(".tab").not(":first").hide();
+var firstTab = tabLinks.filter(":first");
+firstTab.click(); //.trigger("click");
+
+	</script>
+</body>
+</html>

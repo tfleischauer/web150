@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+	<title>Loops and Arrays</title>
+	<meta charset=utf8>
+</head>
+<body>
+	THIS SPACE INTENTIONALLY LEFT BLANK.
+<script>
+	//code goes here
+	var firstArrayEver = ["a", "b", "c", "d", "e"];
+	
+	var numbers = [100, 32, 51, 1, 25, 835, 5];
+	//for (setup ; condition ; change) { ...
+	// "i++" == "i = i + 1"
+	//console.log(numbers);
+	var doubled = [];
+	for (var i = 0; i < numbers.length; i++) {
+		var current = numbers[i];
+		doubled[i] = current * 2;
+	}
+	//console.log(numbers);
+	//console.log(doubled);
+	
+	var neko = {
+		legs: 4,
+		age: 7,
+		hungry: true,
+		color: "orange"
+	};
+	
+	//console.log(neko["legs"]);
+	neko["hungry"] = false;
+	//shorter syntax ["name"] == .name
+	//console.log(neko.legs);
+	
+	//looping over objects
+	for (var key in neko) {
+		console.log(key);
+		console.log(neko[key]);
+	}
+	
+	//console.log("All the console properties:");
+	for (var key in console) {
+		//console.log(key, console[key]);
+	}
+	
+	var total = 0;
+	var highest = doubled[0];
+	var lowest = doubled[0];
+	for (var i = 0; i < doubled.length; i++) {
+		total = total + doubled[i];
+		if (doubled[i] < lowest) {
+			lowest = doubled[i];
+		}
+		if (doubled[i] > highest) {
+			highest = doubled[i];
+		}
+	}
+	console.log(total, lowest, highest);
+	
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Applied Choices</title>
+    <meta charset="utf8">
+  </head>
+  <body style="color: #47cd6f">
+    This space intentionally left blank.
+
+    <script>
+var westSide = true;//confirm("Are you in Seattle?");
+console.log(westSide);
+if (!westSide) {
+  console.log("Din Tai Fung");
+} else {
+
+  var price = prompt("How much money can you spend?") || "9";
+  // price * 1;
+  price = Number(price);
+  if (price <= 5) {
+    console.log("Tacos Chukis");
+  } else if (price < 10) {
+    console.log("5 Point");
+  } else {
+
+    var cuisine = prompt("What kind of food are you interested in?");
+    cuisine = cuisine.toLowerCase();
+
+    switch(cuisine){
+      case "pizza":
+        console.log("Delancey");
+        break;
+
+      case "happy hour":
+        console.log("Ruth's Chris Steakhouse");
+        break;
+
+      case "seafood":
+      case "sushi":
+        console.log("Shiro");
+        break;
+
+      default:
+        console.log("Taco Bell");
+    }
+
+  }
+
+}
+    </script>
+  </body>
+</html>

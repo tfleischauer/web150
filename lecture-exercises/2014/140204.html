@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+
+<meta charset="utf-8">
+<body>
+
+This space left intentionally left blank.
+
+<div class="clickable" id=one>
+One
+</div>
+
+<div class="clickable" id=two>
+Two
+</div>
+
+<input type="text" id="sandbox">
+
+<style>
+.green {
+background: #CFC;	
+}
+</style>
+
+<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+
+<script>
+
+var clickables =$(".clickable");
+clickables.on("click", function() {
+console.log(this);
+var $this = $(this);
+	/* clickables.css("background", "green"); */
+	/* $this.css("background", "green"); /* like hover */ 
+	$this.toggleClass("green");
+	});
+	
+console.log("next");
+
+clickables.on("mousemove", function() {
+var $this = $(this);
+console.log($this.attr("id"));
+if ($this.attr("id") == "one") {
+	$this.css("color", "blue");
+	}
+
+});
+
+clickables.on("mousemove", function(e) {
+var $this = $(this);
+console.log($this.attr("id"));
+console.log(e);
+if ($this.attr("id") == "one") {
+	$this.css("color", "blue");
+	}
+
+});
+
+var sandbox = $("#sandbox");
+sandbox.on("keyup", function() {
+	var $this = $(this);
+	var value = $this.val();
+	// console.log(value);
+	});
+	
+sandbox.on("keydown keypress keyup change", function(e) { /*when this isnt good enough, */
+	var $this = $(this);
+	var value = $this.val();
+	console.log(e.type, value);
+});	
+
+
+	
+	
+</script>
+</body>
+</html>

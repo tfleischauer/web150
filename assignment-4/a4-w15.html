@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<title>a4-w15: Top Companies</title>
+</head>
+
+<body>
+	<!-- companies.js is an array of company objects -->
+	<script src="companies.js"></script>
+	<script>
+
+		console.log("1. What's the smallest company (in terms of employee count) on the list?"); 
+		var leastEmployees = companies[0];
+		for(var i = 0; i < companies.length; i++) {
+			var item = companies[i];
+			// console.log(item.employees);
+			if(item.employees < leastEmployees.employees) {
+				leastEmployees = item;
+			}
+		}
+
+		console.log("The smallest company (in terms of employee count) on the list is: " + leastEmployees.company + ". They have " + leastEmployees.employees + " employees.");
+
+
+		console.log("2. Several companies lost money this year: they had a negative profit. What were these companies?"); 
+		var  negativeProfit = [];
+		for(var i = 0; i < companies.length; i++) {
+			var company = companies[i];
+			// console.log(company.company);
+
+			if (company.profit < 0) {
+				negativeProfit.push(company);
+			}
+		}
+
+		// shows array of negative profit objects
+		// console.log("Array of negative profit objects are: ", negativeProfit);
+
+		console.log("Companies with negative profits are: ");
+		for(var key in negativeProfit) {
+			var value = negativeProfit[key];
+			console.log(value.company, value.profit);
+		}
+
+		console.log("3. What's the average market cap for companies in the manufacturing sector?"); 
+
+		// Put manufacturing objects in array
+		manufacturingCompanies = [];
+		var counter = 0;
+		for(var i = 0; i < companies.length; i++) {
+			var item = companies[i];
+			if (item.sector == "manufacturing") {
+				manufacturingCompanies.push(item);
+			}
+
+			counter = counter + item.marketCap;
+		}
+
+		// console.log(manufacturingCompanies);
+		// console.log(counter);
+		// console.log(manufacturingCompanies.length);
+		console.log("The average market cap for companies in the manufacturing sector is: " + counter / manufacturingCompanies.length);
+
+
+		console.log("4. Which sector has the highest number of employees? Which has the lowest? (optional, not for credit)"); 
+		var sectors = {};
+		// var counter = 0;
+		for(var i = 0; i < companies.length; i++) {
+			
+			// make varibale for comparison
+			var item = companies[i];
+
+			// put sectors in new array
+			var sectorArray = item.sector;
+
+			// if sectory has not seen this type of object.sector
+			if (!sectors[sectorArray]) {
+				// make a new empty array that will contain unique sector objects
+				sectors[sectorArray] = [];
+			}
+
+			// put key / array in sector object
+			sectors[sectorArray].push(item);
+		}
+
+		console.log(sectors);
+
+		/*var employeesBySector = {};
+		var value = [];
+		for(var key in sectors){
+			value = value + sectors[key].employees;
+			value.push[value];
+			console.log(value);
+		}*/
+
+		// tally each array item value of "current"
+		// var a = 0;
+		// for (var i = 0; i < value.length; i++) {
+			// a = a + value[i].employees;
+		// }
+
+
+		// 5. Which company had the highest gain in ranking from the previous year, and which had the highest drop in ranking? (optional, not for credit)
+
+	</script>
+</body>
+</html>

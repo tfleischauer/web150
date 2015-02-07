@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>Cars!</title>
+  </head>
+  <body>
+
+    This space intentionally left blank.
+
+    <script src="http://thomaswilburn.net/scc/data/cars.js"></script>
+    <script>
+console.log(cars[0]);
+
+// for (var i = 0; i < cars.length; i++) {
+//   console.log(cars[i]);
+// }
+
+//finding the highest proportion of car ownership
+var highest = cars[0];
+for (var i = 0; i < cars.length; i++) {
+  var item = cars[i];
+  if (highest.current < item.current) {
+    highest = item;
+  }
+}
+console.log("The highest ownership is", highest.country);
+console.log(highest);
+
+// find the highest proportional increase in cars
+var highestDelta = cars[0];
+for (var i = 0; i < cars.length; i++) {
+  var item = cars[i];
+  var itemProportion = (item.current - item.previous) / item.previous;
+  item.increase = itemProportion;
+  // var hProportion = (highestDelta.current - highestDelta.previous) / highestDelta.previous;
+  if (itemProportion > highestDelta.increase) {
+    highestDelta = item;
+  }
+}
+console.log(highestDelta);
+
+var carless = [];
+for (var i = 0; i < cars.length; i++) {
+  if (cars[i].current < 100) {
+    carless.push(cars[i]);
+  }
+}
+console.log("The low-car countries number:", carless.length);
+console.log(carless);
+
+
+var groups = {};
+for (var i = 0; i < cars.length; i++) {
+  var item = cars[i];
+  var letter = item.country[0]; // treats each country string as an array
+  // console.log(item.country, letter);
+
+  // if there is no value for the current letter in groups
+  if (!groups[letter]) {
+    // make an empty array for the group
+    groups[letter] = [];
+  }
+  // push the whole item into the array with the item's letter
+  groups[letter].push(item);
+}
+console.log(groups);
+
+var averages = {};
+for (var key in groups) {
+  // put the value in the variable called value
+  var value = groups[key];
+  // console.log(key, value);
+
+  // tally current values
+  var a = 0;
+  for (var i = 0; i < value.length; i++) {
+    a = a + value[i].current;
+  }
+  var avg = a / value.length;
+
+  // console.log(avg);
+
+  // re-assign each value to be the average - instead of the array of Objects 
+  // (of each country that starts with the same first letter)
+  averages[key] = avg;
+}
+console.log(averages);
+
+
+    </script>
+  </body>
+</html>
+
+
+
+<!-- -->

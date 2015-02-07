@@ -1,0 +1,27 @@
+#4 - Top Companies - Due: Feb 3
+
+Just as with last week, I've put together a data file for you. In this case, companies.js defines a variable named companies, containing data pulled from the Seattle Times' "Top Northwest Companies" rankings. Each object in the array contains the following properties:
+
+    rank - Rank for this year
+    previous - Rank for last year (if listed, otherwise "")
+    company - Name of the company
+    hq - Location of headquarters
+    sector - Business sector ("computer", "travel", "business")
+    symbol - Stock symbol
+    roic - Return on invested capital
+    marketCap - Current market capitalization
+    freeCash - Free cash
+    sales - Total sales
+    profit - Total profit
+    profitDelta - Change in profit from last year's value
+    roa - Return on assets (I think?)
+    employees - Employee count
+    pe - Price/Earnings ratio 
+
+Don't worry if you don't understand the financial jargon — I don't understand all of it myself, and we won't be using the more esoteric columns. Answer the following questions using the information in this array:
+
+    What's the smallest company (in terms of employee count) on the list?
+    Several companies lost money this year: they had a negative profit. What were these companies?
+    What's the average market cap for companies in the manufacturing sector?
+    (optional, not for credit) Which sector has the highest number of employees? Which has the lowest?
+    (optional, not for credit) Which company had the highest gain in ranking from the previous year, and which had the highest drop in ranking? 

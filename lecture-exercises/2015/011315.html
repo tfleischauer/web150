@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>If and When</title>
+  </head>
+  <body>
+    This is a page about conditionals.
+    <script>
+var x = "false";
+if (x === "true") {
+  console.log("Condition successful");
+} else {
+  console.log("Condition failed");
+}
+
+var cash = 2.00;
+// if wallet < .75
+if (cash < .75) {
+// go to store
+  console.log("Go to store");
+} else if (cash < 1.75) {
+// else if wallet < 1.75
+// buy can
+  console.log("Buy can");
+} else {
+// else buy bottle
+  console.log("Bottle");
+}
+
+// switch / case - useful for discrete, categorical choices
+var cat = prompt("What kind of cat do you want?");
+cat = cat.toLowerCase();
+switch (cat) {
+  case "tabby":
+    console.log("Red delicious of cats");
+    break;
+
+  case "calico":
+  case "tortoiseshell":
+    console.log("The best of cats - almost always female");
+    break;
+
+  default:
+    console.log("I don't know about your cat");
+
+}
+
+// && - AND
+// || - OR
+
+if (cash < .75 || cash > 5) {
+  console.log("Go to the store");
+}
+
+if (cash > 5 && cash < 10) {
+  console.log("Buy something in the building.");
+}
+
+var hasDog = true;
+if (!hasDog) {
+  console.log("Would you like one, I'm selling.");
+}
+
+if (cash > 5 || !(cat !== "tabby")) {
+  //combine and negate conditions
+}
+    </script>
+  </body>
+</html>

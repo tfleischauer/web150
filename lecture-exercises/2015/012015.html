@@ -1,0 +1,80 @@
+<!doctype html>
+<script>
+var names = ["Thomas", "Belle", "Wallace", "Pumpkin"];
+console.log(names[3]);
+names[3] = "Neko";
+names.push("Nermal");
+// names[40] = "Nermal";
+console.log(names);
+// becomes a string
+console.log("the names after Nermal was pushed are: " + names);
+var nermal = names.pop();
+console.log(names, nermal, names.length);
+
+for (var i = 0; i < names.length; i++) {
+  console.log(names[i], i);
+}
+
+var list = [1, 1, 2, 3, 5, 8, 13, 21];
+//add up all the numbers
+var total = 0;
+for (var i = 0; i < list.length; i++) {
+  var item = list[i];
+  total = total + item;
+}
+console.log("Sum of this list:", total);
+
+//find an average
+var average = total / list.length;
+console.log("The average is:", average);
+
+//count number of items > 4
+var count = 0;
+for (var i = 0; i < list.length; i++) {
+  var item = list[i];
+  if (item > 4) {
+    // count = count + 1;
+    count++;
+  }
+}
+console.log("# of items > 4:", count);
+
+//filter list to find odd numbers
+var odds = [];
+for (var i = 0; i < list.length; i++) {
+  var item = list[i];
+  
+  var remainder;
+  // if remainder of 0 or 1
+  if (remainder = item % 2) {
+    console.log("remainder after modulus: " + remainder);
+    odds.push(item);
+  }
+}
+console.log("The odd numbers are:", odds);
+
+//double each item and store it in-place
+for (var i = 0; i < list.length; i++) {
+  var item = list[i];
+  list[i] = item * 2;
+}
+console.log("Doubled:", list);
+
+var randoms = [-3, 4, 17, -47, 8, 122];
+//find the highest and the lowest
+var highest = -Infinity;//randoms[0];
+var lowest = Infinity;
+for (var i = 0; i < randoms.length; i++) {
+  var item = randoms[i];
+  if (item > highest) {
+    console.log("Found a higher number", item);
+    highest = item;
+  }
+  if (item < lowest) {
+    lowest = item;
+  }
+}
+console.log("The highest number is:", highest);
+console.log("The lowest number is:", lowest);
+
+</script>

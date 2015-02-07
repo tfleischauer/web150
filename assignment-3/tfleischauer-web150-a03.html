@@ -1,19 +1,23 @@
 <!doctype html>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>Assignment 3: Around the World</title>
-		<meta charset=utf8>
 	</head>
 	<body>
 
-		<script src="http://thomaswilburn.net/sccc/data/expenditures.js"></script>
+		<script src="expenditures.js"></script>
 		<script>
 			
 			// object variables
-			var highestObject = { amount: 0 };
+			var highestObject = { amount: -Infinity };
+			// console.log("The initialized value for country in the highestObject array is: " + highestObject.country +".", 
+				// "The initialized value for amount in the highestObject array is: " + highestObject.amount + ".");
 			var lowestObject = { amount: Infinity };
-			var moreThan5PercentCountries = { amount: expenditures[0] }; // why is amount needed to initialize? why not country?			
-			var lessThan1PercentObject = { amount: expenditures[0] };
+
+			// create and initialize an empty array to store countries
+			var moreThan5PercentCountriesArray = [];
+			var lessThan1PercentArray = [];
 			
 			// integer or float variables
 			var expenditureTally = 0;
@@ -29,12 +33,14 @@
 				var countryExpenditureObject = expenditures[i];
 				var amountNumber = Number(countryExpenditureObject.amount); // convert "amount" string to a Number
 				
-				// What's the country with the highest expenditures? 
+				// What's the country with the highest military expenditures? 
 				if (countryExpenditureObject.amount > highestObject.amount) {
 					highestObject = countryExpenditureObject;
 				}
 				
-				// What's the country with the lowest expenditures? 
+				// console.log(highestObject);
+
+				// What's the country with the lowest military expenditures? 
 				if (countryExpenditureObject.amount < lowestObject.amount) {
 					lowestObject = countryExpenditureObject;
 				}
@@ -48,14 +54,13 @@
 
 				// How many countries spend more than 5% of GDP on their military?
 				if (amountNumber > 5) {
-					// if country has higher than 5%, put country in an object variable 
-					moreThan5PercentCountries = countryExpenditureObject.country;
-					// then count object variables - moreThan5PercentCountryObjects.length;
+					// if country has higher than 5%, push country name in to the moreThan5PercentCountriesArray 
+					moreThan5PercentCountriesArray.push(countryExpenditureObject.country);
 				}
 				
 				// How many countries spend less than 1%?
 				if (amountNumber < 1) {
-					lessThan1PercentObject = countryExpenditureObject.country;
+					lessThan1PercentArray.push(countryExpenditureObject.country);
 				}
 				
 				// What is the average expenditures just for North America (Canada, the US, and Mexico)?
@@ -83,19 +88,12 @@
 			// outside of loop because allCountriesExceptNAAverage waits for a total
 			allCountriesExceptNAAverage = allCountriesExceptNATally/(expenditures.length - countryCounter);
 			
-			// why does this only display Israel?
-			console.log("More than 5% countries by name: " + moreThan5PercentCountries);
-			// why does this only display Argentina?
-			console.log("Less than 1% countries by name: " + lessThan1PercentObject);
-			
-			// console.log("More than 5% countries by name: " + moreThan5PercentCountries[country]);
-			
 			
 			console.log("The country with the highest military expenditures is: " + highestObject.country);
 			console.log("The country with the lowest military expenditures is: " + lowestObject.country);
 			console.log("The average military expenditure rate of all countries is: " + expenditureAverage);
-			console.log("The amount of countries that spend more than 5% of GDP on their military is: " + moreThan5PercentCountries.length);
-			console.log("The amount of countries that spend less than 1% of GDP on their military is: " + lessThan1PercentObject.length);
+			console.log(moreThan5PercentCountriesArray.length + " countries spend at least 5% of their GDP on their military. Those countries are: " + moreThan5PercentCountriesArray);
+			console.log(lessThan1PercentArray.length + " countries spend less than 1% of GDP on their military. Those countries are: " + lessThan1PercentArray);
 			console.log("The average military expenditure rate of Canada, Mexico, and the United States is: " + northAmericanExpenditureAverage);
 			console.log("The average military expenditure rate of all countries except Canada, Mexico, and the United States is: " + allCountriesExceptNAAverage);
 	

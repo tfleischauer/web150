@@ -1,0 +1,19 @@
+#3 - Earthquake Analysis - Due: Jan. 27
+
+This weekend we're going to do some data analysis. Include this script file in your page. It'll create three arrays for you with information about earthquakes in the previous week, matched across arrays by index (i.e., depth[101] is the same earthquake as magnitude[101]):
+
+    depth - the depths of each quake
+    magnitude - the size of each quake
+    type - the type of each quake 
+
+Using these arrays and your new knowledge of loops, answer the following questions:
+
+    What was the size of the biggest earthquake this week?
+    What is the average depth where a quake takes place?
+    How many quakes have a type other than "earthquake" (e.g., "quarry blast" and "explosion") 
+
+If you are feeling confident, answer the following questions (not for credit):
+
+    What's the depth of the biggest earthquake?
+    What's the average magnitude of quakes with a type of "explosion"?
+    How many earthquakes had a magnitude greater than 2.0? 
