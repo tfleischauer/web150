@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ch6-Object-Lesson</title>
+</head>
+
+	<body>
+
+		<script>
+		var movie = { 
+			title: "Alien", 
+			director: "Ridley Scott", 
+			star: "Sigourney Weaver" 
+		};
+
+		for (var prop in movie) { 
+			// console.log(prop); //"title", "director", "star" 
+
+			//WRONG - this logs "undefined" because movie has no property named "prop" 
+			console.log(movie.prop); 
+
+			//RIGHT - this logs the value of each property inside movie //equivalent of movie["value of prop"] 
+			console.log(movie[prop]); //"Alien", "Ridley Scott", "Sigourney Weaver" }
+		}
+
+
+		var gameObjects = [
+			{ type: "Monster", health: 10, x: 20, y: 30 }, 
+			{ type: "Bonus", score: 1000, x: 45, y: 10 }, 
+			{ type: "Fence", height: 20, x: 10, y: 0 },
+			{ type: "Monster", health: 100, x: 200, y: 300 } 
+		]; 
+
+		var notFence = []; 
+		var lowAltitude = []; 
+		var typeCounter = {}; 
+
+		for (var i = 0; i < gameObjects.length; i++) { 
+			var item = gameObjects[i]; //get each item 
+			if (item.type !== "Fence") { 
+				notFence.push(item); //add qualifying items to array 
+			} 
+
+			if (item.y < 10) { 
+				lowAltitude.push(item); 
+			} 
+
+			// get item type to use as a key for lookup inside typeCounter
+			var type = item.type; 
+
+			console.log("type is:" + type);
+
+			// check type to to see if weve encountered that type before
+			if (typeof typeCounter[type] == "undefined") { 
+				// initializes counter to zero
+					typeCounter[type] = 0; 
+			} 
+
+			// adds 
+			typeCounter[type]++; 
+		} 
+
+		console.log("All non-fence items: ", notFence); 
+		console.log("All low-altitude items: ", lowAltitude); 
+
+		for (var type in typeCounter) { 
+			// put value in count variable
+			var count = typeCounter[type]; 
+			console.log(count + " items of type " + type); 
+		}
+
+		</script>
+
+</body>
+</html>
