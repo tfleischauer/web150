@@ -66,6 +66,7 @@
 
 		console.log("4. Which sector has the highest number of employees? Which has the lowest? (optional, not for credit)"); 
 		var sectors = {};
+		var employeeTotal = 0;
 		// var counter = 0;
 		for(var i = 0; i < companies.length; i++) {
 			
@@ -73,27 +74,62 @@
 			var item = companies[i];
 
 			// put sectors in new array
-			var sectorArray = item.sector;
+			var sectorKey = item.sector;
 
-			// if sectory has not seen this type of object.sector
-			if (!sectors[sectorArray]) {
-				// make a new empty array that will contain unique sector objects
-				sectors[sectorArray] = [];
+			// if sectors has not seen this type of object key
+			if (!sectors[sectorKey]) {
+				// make a new empty array that will contain unique sector key objects
+				sectors[sectorKey] = [];
+
+
 			}
+			// employeeTotal = employeeTotal + item.employees;
+			// console.log(employeeTotal);
 
 			// put key / array in sector object
-			sectors[sectorArray].push(item);
+			// sectors[sectorKey].push(item);
+			sectors[sectorKey].push(item.employees);
+
+			
+
+			// for(var key in sectors){ 
+			// 	employeeTotal = employeeTotal + item.employees;
+			// 	sectors[key] = employeeTotal;
+			// }
 		}
 
 		console.log(sectors);
+		// console.log(employeeTotal);
 
-		/*var employeesBySector = {};
-		var value = [];
+		var employeesBySector = {};
+		var value = 0;
 		for(var key in sectors){
-			value = value + sectors[key].employees;
-			value.push[value];
-			console.log(value);
+			// value = value + sectors[key].employees;
+			// value.push[value];
+			// console.log(value);
+
+			value = value + sectors[key];
+
+			// console.log(key, value);
+
+			var employees = sectors.employees;
+			employeesBySector[employees] = 0;
+
+			employeesBySector[employees]++;
+		}
+
+		console.log(sectors[key]);
+
+		console.log(employeesBySector);
+
+		/*var key2 = [];
+		for(var key in sectors){
+			for(var key2 in sectorKey)
+				var item = sectorKey[key2];
+				console.log(item);
 		}*/
+
+		
 
 		// tally each array item value of "current"
 		// var a = 0;
