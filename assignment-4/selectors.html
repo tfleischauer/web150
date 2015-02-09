@@ -74,6 +74,7 @@
   // var children
   var article = $('#article');
   var children = article.find('.external');
+  // console.log(children);
   
   //5. Find the nearest ancestor <div> to the <aside> tag.
   // var closest;
@@ -85,9 +86,9 @@
   
   
   //7. Find all odd-numbered span tags and hide them
-   var spanItems = $("span");
-   var oddItems = spanItems.filter(":odd");
-   oddItems.hide();
+   var spanItems = $("span:odd");
+   // var oddItems = spanItems.filter(":odd");
+ spanItems.hide();
   
   
   //8. Find the span with a class of animal, and change its text to read "vegetable"

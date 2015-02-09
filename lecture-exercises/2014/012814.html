@@ -4,12 +4,11 @@
 	<title>My First jQuery</title>
 	<meta charset="utf8">
 	<style>
-.stripe {
-	background: blue;
-}
+		.stripe {
+			background: blue;
+		}
 
-.bg { background: red; }
-
+		.bg { background: red; }
 	</style>
 </head>
 <body>
@@ -45,14 +44,17 @@ SELECTORS TO USE WITH JQUERY
 var menuItems = $(".menu li");
 console.log(menuItems);
 //setter - a value was provided and will be set
-menuItems.html("No pie today");
+// menuItems.html("No pie today");
 //getter - without a value, will return the current value
 console.log( menuItems.html() );
 
 menuItems.css("color", "green");
-menuItems.css("transform", "translateX(20px)");
-var background = menuItems.css("background"); /* what is this? */
+menuItems.css("transform", "translateX(20px)"); // translateX shifts the horizontal starting point 
+var background = menuItems.css("background");
 console.log(background);
+
+// var background = menuItems.css("background", "black");
+// background.css("black");
 
 menuItems.fadeOut();
 menuItems.fadeIn();
@@ -75,7 +77,7 @@ console.log(div);
 var menuHeight = menu.height();
 console.log(menuHeight);
 menu.height(300);
-menu.width(20);
+menu.width(25);
 
 var offset = menu.offset();
 console.log(offset);
@@ -84,9 +86,3 @@ menu.offset({top: 100, left: 100});
 </script>
 </body>
 </html>
-
-
-
-
-
-

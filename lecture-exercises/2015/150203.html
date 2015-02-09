@@ -1,0 +1,59 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jQuery!</title>
+</head>
+
+<body>
+	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+	<p>
+		This space intentionally left blank.
+	
+
+	<p class="hello" id="world">
+			<span>
+				This space <b>intentionally</b> left blank.
+			</span>
+
+	<p>
+		This is paragraph <b>three</b>.
+
+	<script>
+	
+		var paragraphs = $("p");
+		// paragraphs.html("Set from jQuery!");
+
+		var paragraphs2 = $("p.hello");
+		paragraphs2.html("<span>Set from <b>jQuery</b> 2!</span>");
+
+		var paragraphs3 = $("p.odd");
+		paragraphs3.html("Set from jQuery Odd!");
+
+		// jQuery does not inform of elements that fail to be targetted
+		// use a test like this to see if elements exist
+		if (paragraphs.length == 0) {
+			console.log("Nothing Found");
+		}
+
+		paragraphs.css("background", "cadetblue");
+
+		paragraphs.fadeIn(10 * 1000);
+		paragraphs.fadeOut(10 * 1000);
+		paragraphs.slideUp(10 * 500);
+		paragraphs.slideDown(10 * 500);
+
+		var b = paragraphs.find("b");
+		b.css("color", "green");
+
+
+		var b2 = paragraphs.find("span b");
+		b2.css("color", "peru");
+
+		var span = $("b").closest("span");
+		span.css("color", "rebeccapurple");
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Extra jQuery!</title>
+
+	<style>
+		.menu li {  /* 11 points */
+			color:lightsalmon;
+			background: lightseagreen;
+			opacity: 1;
+			transition: opacity 20s, color 20s, background 20s;
+		}
+
+		.menu li.fade { /* 21 points overrides 11 points */
+			opacity: 0;
+			color:salmon;
+			background:seagreen;
+		}
+
+	</style>
+
+</head>
+
+<body>
+	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+	<div class="container">
+		<nav class="menu">
+				<ul>
+					<li>Home
+					<li>About
+					<li>Contact
+				</ul>
+		</nav>
+
+		<main>
+			Text goes here.
+		</main>
+
+	</div>
+
+	<script>
+		var firstMenu = $(".menu li:first");
+		console.log( firstMenu.html() ); // a getter has no argument
+
+		var menuItems = $(".menu li");
+		console.log( menuItems.html() );
+
+		menuItems = menuItems.filter(":odd"); //will filter out the even array indexes 
+		menuItems.css("color", "red"); // 1 is red, 0 is black
+
+		var menu = $(".menu");
+		menu.fadeOut();
+		menu.fadeIn();
+		menu.find("li:last").addClass("fade");
+
+		menu.css("transform-origin", "top left");
+
+		menu.css("transform", "perspective(1000px) rotateY(30deg)");
+	</script>
+
+</body>
+</html>
