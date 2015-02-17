@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>A6: Dog Solution</title>
+    
+    <style>
+        table {
+            margin:auto;
+        }
+        
+        tr {
+            outline: 2px solid #333; 
+            padding:20px;
+        }
+        
+        td {
+            outline: 2px solid #666;
+            padding:20px;
+        }
+        
+        th {
+            padding: 10px;
+        }
+        
+        h1 {
+            text-align:center;
+        }
+        
+        body {
+            font-family: helvetica, arial;
+        }
+        
+        .button-set {
+            margin: auto;
+            width:225px;
+            text-align:center;
+            padding-bottom:20px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>A6: Dog Solution</h1>
+    
+        <div class="button-set">  
+            <button class="reset">reset</button>
+            <button class="filter" data-filter="small">small</button>
+            <button class="filter" data-filter="medium">medium</button>
+            <button class="filter" data-filter="large">large</button>
+        </div>  
+
+    
+    <table>
+        <thead>
+            <th>Name</th>
+            <th>Breed</th>
+            <th>Sex</th>
+            <th>Size</th>
+            <th>Color</th>
+        </thead>
+        <tr class="small"> <!-- use classes to categorize elements in a way unrelated to style -->
+            <td>Name: Dog 1</td>
+            <td>Breed: Type A</td>
+            <td>Sex: M</td>
+            <td>Size: Small</td>
+            <td>Color: Red</td>
+        </tr>
+        
+        <tr class="small">
+            <td>Name: Dog 2</td>
+            <td>Breed: Type A</td>
+            <td>Sex: M</td>
+            <td>Size: Small</td>
+            <td>Color: Brown</td>
+        </tr>
+        
+        <tr class="medium">
+            <td>Name: Dog 3</td>
+            <td>Breed: Type B</td>
+            <td>Sex: M</td>
+            <td>Size: Medium</td>
+            <td>Color: Black</td>
+        </tr>
+        
+        <tr class="medium">
+            <td>Name: Dog 4</td>
+            <td>Breed: Type B</td>
+            <td>Sex: F</td>
+            <td>Size: Medium</td>
+            <td>Color: White</td>
+        </tr>
+        
+        <tr class="large">
+            <td>Name: Dog 5</td>
+            <td>Breed: Type C</td>
+            <td>Sex: F</td>
+            <td>Size: Large</td>
+            <td>Color: Cream</td>
+        </tr>
+    </table>
+
+
+<script src="../jquery-2.1.3.min.js"></script>
+<script>
+    
+    var filterButtons = $(".filter"); // all the buttons
+    console.log(filterButtons);
+    filterButtons.on("click", function() { // when a button is clicked
+        var $this = $(this); // make clicked button a jQuery variable
+        console.log($this);
+        var filterAttr = $this.attr("data-filter"); // get data-filter attribute from clicked button ex. small
+        var rows = $("tr:not(:first)"); // find all table rows, exclude the table head
+        console.log(rows);
+        var selector = "." + filterAttr; // make a class from filterAttr, store in selector ex. .small
+        console.log(selector);
+        rows.hide(); // hide all table rows     
+        // $(selector).show(); // works
+        // rows.filter(selector).show();  // show rows matching the filter attribute // also works
+        rows.filter($(selector)).show();  // show rows matching the filter attribute // also works
+    });
+    
+    var reset = $(".reset");
+    reset.on("click", function() {
+        var rows = $("tr"); // find all table rows
+        rows.show(); // show all table rows
+    });
+
+</script>
+</body>
+
+</html>
