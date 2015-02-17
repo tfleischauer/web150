@@ -1,0 +1,115 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>150212 jQuery + Functions</title>
+
+	<style>
+	.block {
+		width:100px;
+		height: 100px;
+		margin: 20px;
+		float: left;
+		color: white;
+		transition: transform 1s;
+	}
+
+	.dev { background-color: #808; }
+	.designer { background-color: #0cc ;}
+	.business { background-color: #822 ;}
+
+	.hover { transform: scale(1.3); } 
+
+
+	<!-- block:hover -->
+
+
+	</style>
+</head>
+
+<body>
+
+	<h1>150212 jQuery + Functions</h1>
+
+	<nav>
+		<button class="reset">All</button>
+		<button class="filter" data-filter="business">Business</button>
+		<button class="filter" data-filter="dev">Coders</button>
+		<button class="filter" data-filter="designer">Designers</button>
+	</nav>
+
+	<main></main>
+
+	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+	<script>
+
+	var main = $("main");
+	for (var i =0; i < 23; i++) {
+		/// console.log("hello", i);
+		var block = $("<div></div>");
+		block.html("hello " + i);
+		var random = Math.random(); // gives a number between 0 and 1
+		// var className = "dev";
+		var className;
+		if (random < .3) {
+			className = "business";
+		} else if (random < .7) {
+			className = "dev"
+		} else {
+			className = "designer";
+		}
+
+
+		block.addClass("block");
+		block.addClass(className);
+		main.append(block);
+
+	}
+
+	var blocks = $(".block");
+	blocks.on("click", function() {
+		var $this = $(this);
+		// $this.css("transform", "scale(1.3)");
+		$(".hover").removeClass("hover"); // modal hover might show their name or flip the card over
+		$this.addClass("hover");
+
+	});
+
+	blocks.on("mouseenter mouseleave", function(e) {
+		var $this = $(this);
+			// jQ has a type
+			// console.log(e.type); // check event type
+
+			// if (e.type == "mouseenter") {
+				// $this.addClass("hover");
+			// } else {
+				// $this.removeClass("hover");
+			// }
+
+			$this.toggleClass("hover", e.type == "mouseenter");
+
+	});
+
+	var filterButtons = $(".filter");
+	filterButtons.on("click", function() {
+		var $this = $(this);
+		// get value of attribute
+		var filter = $this.attr("data-filter"); // gets the tag name such as business
+		// hide all blocks
+		blocks.hide();
+		// show blocks matching filter
+		var selector = "." + filter; // makes .business
+		// $(selector).show();
+		blocks.filter(selector).show(); // return a subset of blocks and then show that blocks in not changed
+	});
+
+	var allButton = $(".reset");
+	allButton.on("click", function() {
+		blocks.show();
+	});
+
+	</script>
+
+</body>
+</html>

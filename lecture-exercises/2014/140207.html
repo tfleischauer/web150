@@ -61,7 +61,7 @@ tabLinks.on("click", function(e) {
 	$(".active").removeClass("active"); // why not "." here to remove?
 	// find the li tag that was clicked
 	// start with class that I clicked and then work your way up.
-	// looking for the closest _____________. Doesn't care how many tags between "them"? 
+	// looking for the closest 'li', up the document tree. Doesn't care how many tags between "them"? 
 	var li = this.closest("li");
 	// add the active class
 	li.addClass("active");	

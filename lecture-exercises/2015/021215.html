@@ -1,0 +1,94 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset=utf8>
+    <style>
+.block {
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+  float: left;
+  color: white;
+  transition: transform 1s;
+}
+
+.dev { background-color: #808 }
+.designer { background-color: #0CC }
+.business { background-color: #822 }
+
+.hover { transform: scale(1.3); }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <button class="reset">All</button>
+      <button class="filter" data-filter="business">Business</button>
+      <button class="filter" data-filter="dev">Coders</button>
+      <button class="filter" data-filter="designer">Designers</button>
+    </nav>
+    <main></main>
+
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script>
+
+var main = $("main");
+for (var i = 0; i < 23; i++) {
+  var block = $("<div></div>");
+  block.html("hello " + i);
+  var random = Math.random(); //gives a number between 0 and 1
+  var className;
+  if (random < .3) {
+    className = "business";
+  } else if (random < .7) {
+    className = "dev";
+  } else {
+    className = "designer";
+  }
+  block.addClass("block");
+  block.addClass(className);
+  main.append(block);
+}
+
+var blocks = $(".block");
+blocks.on("click", function(e) {
+  var $this = $(this);
+  // $this.css("transform", "scale(1.3)");
+  $(".hover").removeClass("hover");
+  $this.addClass("hover");
+});
+
+blocks.on("mouseenter mouseleave", function(e) {
+  var $this = $(this);
+  // if (e.type == "mouseenter") {
+  //   $this.addClass("hover");
+  // } else {
+  //   $this.removeClass("hover");
+  // }
+  $this.toggleClass("hover", e.type == "mouseenter");
+});
+
+var filterButtons = $(".filter");
+filterButtons.on("click", function() {
+  var $this = $(this);
+  var filter = $this.attr("data-filter");
+  // hide all blocks
+  blocks.hide();
+  // show blocks matching the filter
+  var selector = "." + filter;
+  // $(selector).show();
+  blocks.filter(selector).show();
+});
+
+var allButton = $(".reset");
+allButton.on("click", function() {
+  blocks.show();
+});
+
+    </script>
+  </body>
+</html>
+
+
+
+
+<!-- -->

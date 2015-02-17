@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>150210b jQuery + Functions</title>
+	<style>
+	section {
+		height: 500px; 
+	}
+
+	.tabs li.active {
+		background: seagreen;
+	}
+
+	</style>
+</head>
+
+<body>
+	<nav class="tabs">
+		<ul>
+			<li> <a href="#fruit">Fruit pies</a>
+			<li> <a href="#meringue">Meringue pies</a>
+			<li> <a href="#meat">Meat pies</a>
+		</ul>
+	</nav>
+
+	<section id="fruit">Fruit pie section</section>
+	<section id="meringue">meringue section</section>
+	<section id="meat">meat section</section>
+
+	<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+	<h1>150210b jQuery + Functions</h1>
+
+	<script>
+
+	// have menu elements
+	// when menu is clicked
+		// hide other sections
+		// show chosen section
+
+
+	// Tabs
+	// Gallery
+	// Menu
+
+	var menuLinks = $(".tabs a");
+	menuLinks.on("click", function(event) {
+		event.preventDefault(); // prevent browser default (such as jumping and url changing ((in Chrome)))
+		var $this = $(this); // this is the click on a tags
+		var id = $this.attr("href");
+		var section = $(id);
+		$("section").hide(); // hide everything
+		section.show(); // then show the one thing
+		$(".tabs .active").removeClass("active");
+		$this.closest("li").addClass("active"); // we styled 'li' not 'a' tags
+	});
+
+	var hash = location.hash || "#meat"; // use default or otherwise use fruit
+	var firstItem = $(".tabs a[href='" + hash + "']");
+	// .tabs a[href='#fruit']
+	// var firstItem = $(".tabs a:first");
+	// firstItem.trigger("click");
+	firstItem.click();
+
+	</script>
+
+</body>
+</html>
+
+
