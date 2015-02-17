@@ -1,0 +1,11 @@
+#6 - Dog Solution - Due: Feb 17
+
+Let's turn our attention to the serious problem of dogs, and lists containing dogs. This week we have experimented with UI for showing and hiding an entire section of the page, but what if we wanted to be more granular? For your assignment, create a page that has the following characteristics:
+
+    A table (yes, a table!) listing a number of dogs that are available for adoption. Specify the name, breed, sex, size (small, medium, large), and color.
+    A set of buttons above the table that for at least one of these characteristics will allow you to filter the table. For example, you might have buttons marked "small," "medium," and "large" that will show only table rows matching those dogs fitting the category when clicked.
+    A "reset" or "all" button that will show all the dogs after the list has been filtered. 
+
+Hint: you will find this homework easy to do if you remember two things: first, that you can use classes to categorize elements in ways unrelated to style, and second, that you should probably show/hide the entire table row instead of individual cells or blocks inside the table.
+
+If you would like an extra challenge, make the buttons behave like toggles, so that I can search for dogs matching multiple criteria ("large, black, female dogs"). If you attempt this, I would highly recommend first committing a working version of the default assignment, in case it turns out to be harder than you anticipate and you need to roll back to the earlier page. 
