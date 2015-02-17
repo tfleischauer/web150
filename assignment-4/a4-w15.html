@@ -21,10 +21,13 @@
 			}
 		}
 
-		console.log("The smallest company (in terms of employee count) on the list is: " + leastEmployees.company + ". They have " + leastEmployees.employees + " employees.");
+		console.log("The smallest company (in terms of employee count) on the list is: " + 
+			leastEmployees.company + ". They have " + leastEmployees.employees + " employees.");
 
 
-		console.log("2. Several companies lost money this year: they had a negative profit. What were these companies?"); 
+		console.log("2. Several companies lost money this year: they had a negative profit." +
+			"What were these companies?"); 
+
 		var  negativeProfit = [];
 		for(var i = 0; i < companies.length; i++) {
 			var company = companies[i];
@@ -61,10 +64,13 @@
 		// console.log(manufacturingCompanies);
 		// console.log(counter);
 		// console.log(manufacturingCompanies.length);
-		console.log("The average market cap for companies in the manufacturing sector is: " + counter / manufacturingCompanies.length);
+		console.log("The average market cap for companies in the manufacturing sector is: " + 
+			counter / manufacturingCompanies.length);
 
 
-		console.log("4. Which sector has the highest number of employees? Which has the lowest? (optional, not for credit)"); 
+		console.log("4. Which sector has the highest number of employees? Which has the lowest?" + 
+			" (optional, not for credit)");
+
 		var sectors = {};
 		var employeeTotal = 0;
 		// var counter = 0;
@@ -80,65 +86,76 @@
 			if (!sectors[sectorKey]) {
 				// make a new empty array that will contain unique sector key objects
 				sectors[sectorKey] = [];
-
-
 			}
-			// employeeTotal = employeeTotal + item.employees;
-			// console.log(employeeTotal);
 
-			// put key / array in sector object
-			// sectors[sectorKey].push(item);
+			// put key / arrays containing number of employees in sector object
 			sectors[sectorKey].push(item.employees);
-
-			
-
-			// for(var key in sectors){ 
-			// 	employeeTotal = employeeTotal + item.employees;
-			// 	sectors[key] = employeeTotal;
-			// }
 		}
 
-		console.log(sectors);
-		// console.log(employeeTotal);
+		// console.log(sectors);
 
-		var employeesBySector = {};
-		var value = 0;
+		// initialize the highestEmployees and LowestEmployees objects
+		var highestEmployees = { sector: "", employees: -Infinity };
+		var lowestEmployees = { sector: "", employees: Infinity };
 		for(var key in sectors){
-			// value = value + sectors[key].employees;
-			// value.push[value];
-			// console.log(value);
 
-			value = value + sectors[key];
+			// counter for employees
+			var sumEmployees = 0;
 
-			// console.log(key, value);
+			// put each array of employees values into variable
+			var item = sectors[key];
 
-			var employees = sectors.employees;
-			employeesBySector[employees] = 0;
+			// run loop until there are no more arrays of employees left in the sectors object
+			for (var i = 0; i < item.length; i++) {
 
-			employeesBySector[employees]++;
+				// add values in the array of employees
+				sumEmployees += item[i];
+			}
+
+			if (sumEmployees > highestEmployees.employees) {
+				highestEmployees.sector = key;
+				highestEmployees.employees = sumEmployees;
+			}
+
+			if (sumEmployees < lowestEmployees.employees) {
+				lowestEmployees.sector = key;
+				lowestEmployees.employees = sumEmployees;	
+			}
+
 		}
 
-		console.log(sectors[key]);
+		console.log("The sector with the highest number of employees is " + highestEmployees.sector +
+			". " + highestEmployees.sector + " has " + highestEmployees.employees + " employees.");
 
-		console.log(employeesBySector);
-
-		/*var key2 = [];
-		for(var key in sectors){
-			for(var key2 in sectorKey)
-				var item = sectorKey[key2];
-				console.log(item);
-		}*/
-
-		
-
-		// tally each array item value of "current"
-		// var a = 0;
-		// for (var i = 0; i < value.length; i++) {
-			// a = a + value[i].employees;
-		// }
+		console.log("The sector with the lowest number of employees is " + lowestEmployees.sector + 
+			". " + lowestEmployees.sector + " has " + lowestEmployees.employees + " employees.");
 
 
 		// 5. Which company had the highest gain in ranking from the previous year, and which had the highest drop in ranking? (optional, not for credit)
+		console.log("5. Which company had the highest gain in ranking from the previous year," + 
+			"and which had the highest drop in ranking? (optional, not for credit)");
+
+		var highestGain =  {};
+		var highestDrop = {};
+		// initialize object to have company and rank properties
+		var companyRatings = { company: "", rank: -Infinity };
+		for(var i = 0; i < companies.length; i++) {
+			var item = companies[i];
+
+			companyRatings.company = item.company;
+			companyRatings.rank = item.rank;
+
+			// companies.company 
+			// companies.rank
+
+
+			// var counter = 0;
+			// for(key in )
+			console.log(companyRatings);
+
+		}
+
+		
 
 	</script>
 </body>

@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Ch9-Functions</title>
+</head>
+
+<body>
+
+	<h1>template()</h1>
+
+		<ul id="main-menu">
+
+		</ul>
+
+	<script>
+		var fillMe = '<a href="{{url}}" title="{{title}}">{{text}}</a>';
+		var link = {
+			url: "http://example.com",
+			title: "link to example.com",
+			text: "Go to example.com."
+			}
+		
+		var template = function(text, objectData) {
+			for(var key in objectData) {
+				var value = objectData[key]; // get the value of each item
+				// now we substitute each tag with its value
+				text = text.replace('{{' + key + '}}', value);
+
+			}
+
+			// console.log(fillMe);
+			// return fillMe;
+			return text;
+		};
+
+		// template();
+		var output = template(fillMe, link);
+		console.log(output);
+
+		var menuTemplate = '<li class="{{classes}}"> <a href="{{href}}">{{label}}</a>';
+		var menus = [
+			{
+				classes: 'about',
+				href: '#about-us',
+				label: 'About Us'
+			},
+			{
+				classes: 'buy',
+				href: 'buy.html',
+				label: 'Buy Tickets'
+			},
+			{
+				classes: 'news',
+				href: 'news.php',
+				label: 'Recent News'
+			}
+
+		];
+
+		for (var i = 0; i < menus.length; i++) {
+			var menuItem = template(menuTemplate, menus[i]); // create each from data
+			console.log(menuItem);
+			console.log(menus.length);
+			$('#main-menu').append(menuItem); // add to the main menu element
+		}
+
+
+	</script>
+
+</body>
+</html>
